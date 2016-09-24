@@ -14,6 +14,7 @@ This also installs the following:
 * [Process Explorer](https://technet.microsoft.com/en-us/sysinternals/processexplorer.aspx)
 * [Process Monitor](https://technet.microsoft.com/en-us/sysinternals/processmonitor.aspx)
 * [Google Chrome](https://www.google.com/chrome/)
+* [ReSharper](https://www.jetbrains.com/resharper/)
 
 
 # Usage
