@@ -408,10 +408,6 @@ Install-ChocolateyShortcut `
   -TargetPath "$env:windir\system32\services.msc" `
   -Description 'Windows Services'
 
-# install Visual Studio Community.
-# NB will return -1 or 3010 as a flag to let us known to reboot the machine.
-Start-Choco `
-    install, -y,
-    visualstudio2015community,
-    -packageParameters, '--AdminFile C:\vagrant\VisualStudioAdminDeploymentCustomizations.xml' `
-    -SuccessExitCodes 0,-1,3010
+# install the huge KB2919355 (needed by Visual Studio Community 2015).
+# NB will return 3010 as a flag to let us known to reboot the machine.
+Start-Choco install,-y,kb2919355 -SuccessExitCodes 0,3010
