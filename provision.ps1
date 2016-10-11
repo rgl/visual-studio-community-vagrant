@@ -290,10 +290,10 @@ Install-Application `
 Install-BinFile de4dot 'C:\Program Files\de4dot\de4dot.exe'
 
 # install msys2.
-# NB we have to manually build another version of the msys2 package
-#    because the current one is broken.
+# NB we have to manually build the msys2 package from source
+#    because the current chocolatey package is broken.
 Push-Location $env:TEMP
-$p = Start-Process git 'clone','-b','update_to_20160719','https://github.com/petemounce/choco-packages' -PassThru -Wait
+$p = Start-Process git clone,https://github.com/userzimmermann/choco-packages -PassThru -Wait
 if ($p.ExitCode) {
     throw "git failed with exit code $($p.ExitCode)"
 }
