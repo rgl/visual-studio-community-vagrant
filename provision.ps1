@@ -273,17 +273,7 @@ Install-Application `
 Install-BinFile de4dot 'C:\Program Files\de4dot\de4dot.exe'
 
 # install msys2.
-# NB we have to manually build the msys2 package from source
-#    because the current chocolatey package is broken.
-Push-Location $env:TEMP
-$p = Start-Process git clone,https://github.com/userzimmermann/choco-packages -PassThru -Wait
-if ($p.ExitCode) {
-    throw "git failed with exit code $($p.ExitCode)"
-}
-cd choco-packages/msys2
-choco pack
-choco install -y msys2 -Source $PWD
-Pop-Location
+choco install -y msys2
 
 # configure the msys2 launcher to let the shell inherith the PATH.
 $msys2BasePath = 'C:\tools\msys64'
