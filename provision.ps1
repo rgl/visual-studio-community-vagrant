@@ -365,16 +365,27 @@ EOF
 # install useful tools.
 Bash 'pacman --noconfirm -Sy netcat'
 
+# install ConEmu.
+choco install -y conemu
+cp ConEmu.xml $env:APPDATA\ConEmu.xml
+reg import ConEmu.reg
+
 # remove the default desktop shortcuts.
 del C:\Users\Public\Desktop\*.lnk
 
 # add MSYS2 shortcut to the Desktop and Start Menu.
 Install-ChocolateyShortcut `
   -ShortcutFilePath "$env:USERPROFILE\Desktop\MSYS2 Bash.lnk" `
-  -TargetPath "$msys2BasePath\msys2.exe"
+  -TargetPath 'C:\Program Files\ConEmu\ConEmu64.exe' `
+  -Arguments '-run {MSYS2} -icon C:\tools\msys64\msys2.ico' `
+  -IconLocation C:\tools\msys64\msys2.ico `
+  -WorkingDirectory '%USERPROFILE%'
 Install-ChocolateyShortcut `
   -ShortcutFilePath "C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\MSYS2 Bash.lnk" `
-  -TargetPath "$msys2BasePath\msys2.exe"
+  -TargetPath 'C:\Program Files\ConEmu\ConEmu64.exe' `
+  -Arguments '-run {MSYS2} -icon C:\tools\msys64\msys2.ico' `
+  -IconLocation C:\tools\msys64\msys2.ico `
+  -WorkingDirectory '%USERPROFILE%'
 
 # add Services shortcut to the Desktop.
 Install-ChocolateyShortcut `
