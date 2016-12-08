@@ -1,3 +1,4 @@
+
 # define the process privilege manipulation function.
 Add-Type @'
 using System;
@@ -393,6 +394,6 @@ Install-ChocolateyShortcut `
   -TargetPath "$env:windir\system32\services.msc" `
   -Description 'Windows Services'
 
-# install the huge KB2919355 (needed by Visual Studio Community 2015).
-# NB will return 3010 as a flag to let us known to reboot the machine.
-Start-Choco install,-y,kb2919355 -SuccessExitCodes 0,3010
+# install the Desktop Experience.
+# NB this needed for connecting to Android phones.
+Install-WindowsFeature Desktop-Experience
