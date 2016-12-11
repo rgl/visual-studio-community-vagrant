@@ -267,7 +267,7 @@ Install-Application `
     dnSpy `
     https://github.com/0xd4d/dnSpy/releases/download/v3.0.0/dnSpy.zip `
     cdc52610c8445d39db7ee93e29de6ded53c0a1f9c0d92f86263478cbe85b3a51
-Install-BinFile de4dot 'C:\Program Files\dnSpy\dnSpy.exe'
+Install-BinFile dnSpy 'C:\Program Files\dnSpy\dnSpy.exe'
 Install-Application `
     de4dot `
     https://ci.appveyor.com/api/buildjobs/inku0l04uplh1d1r/artifacts/de4dot.zip `
