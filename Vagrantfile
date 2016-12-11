@@ -25,9 +25,11 @@ Vagrant.configure(2) do |config|
       "--product", "SAMSUNG_Android"]
   end
   config.trigger.before :up do
-    info "Clearing any previously set USB filters..."
-    until `VBoxManage showvminfo #{@machine.id} --machinereadable | grep USBFilterName`.empty?
-      run "VBoxManage usbfilter remove 0 --target #{@machine.id}"
+    if @machine.id
+      info "Clearing any previously set USB filters..."
+      until `VBoxManage showvminfo #{@machine.id} --machinereadable | grep USBFilterName`.empty?
+        run "VBoxManage usbfilter remove 0 --target #{@machine.id}"
+      end
     end
   end
   config.vm.provision "shell", path: "ps.ps1", args: "provision-choco.ps1"
