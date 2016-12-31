@@ -23,6 +23,17 @@ Vagrant.configure(2) do |config|
       "--name", "Samsung Galaxy J5 (SM-J500FN)",
       "--manufacturer", "SAMSUNG",
       "--product", "SAMSUNG_Android"]
+    audio_driver = case RUBY_PLATFORM
+      when /linux/
+        "alsa"
+      when /darwin/
+        "coreaudio"
+      when /mswin|mingw|cygwin/
+        "dsound"
+      else
+        raise "Unknown RUBY_PLATFORM=#{RUBY_PLATFORM}"
+      end
+    vb.customize ["modifyvm", :id, "--audio", audio_driver, "--audiocontroller", "hda"]
   end
   config.trigger.before :up do
     if @machine.id

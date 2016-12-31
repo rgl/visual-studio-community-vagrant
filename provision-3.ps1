@@ -1,4 +1,8 @@
 
+# automatically start Windows Audio.
+Set-Service Audiosrv -StartupType Automatic
+Start-Service Audiosrv
+
 # install ReSharper.
 choco install -y resharper
 
