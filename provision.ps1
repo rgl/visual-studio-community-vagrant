@@ -378,7 +378,8 @@ cp ConEmu.xml $env:APPDATA\ConEmu.xml
 reg import ConEmu.reg
 
 # remove the default desktop shortcuts.
-del C:\Users\Public\Desktop\*.lnk
+del C:\Users\*\Desktop\*.lnk
+del -Force C:\Users\*\Desktop\*.ini
 
 # add MSYS2 shortcut to the Desktop and Start Menu.
 Install-ChocolateyShortcut `
