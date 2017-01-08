@@ -231,6 +231,7 @@ choco install -y notepad2
 # install other useful applications and dependencies.
 choco install -y baretail
 choco install -y --allow-empty-checksums dependencywalker
+choco install -y processhacker
 choco install -y procexp
 choco install -y procmon
 choco install -y fiddler4
