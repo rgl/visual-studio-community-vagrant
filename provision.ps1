@@ -217,18 +217,13 @@ New-Item -Path HKCU:Software\IvoSoft\ClassicStartMenu\Settings -Force `
     | Out-Null
 choco install -y classic-shell --allow-empty-checksums -installArgs ADDLOCAL=ClassicStartMenu
 
-# install Google Chrome and some useful extensions.
-# see https://developer.chrome.com/extensions/external_extensions
+# install Google Chrome.
+# see https://www.chromium.org/administrators/configuring-other-preferences
 choco install -y googlechrome
-@(
-    # JSON Formatter (https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa).
-    'bcjindcccaagfpapjjmafapmmgkkhgoa'
-    # uBlock Origin (https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm).
-    'cjpalhdlnbpafiamejdnhcphjbkeiagm'
-) | ForEach-Object {
-    New-Item -Force -Path "HKLM:Software\Wow6432Node\Google\Chrome\Extensions\$_" `
-        | Set-ItemProperty -Name update_url -Value 'https://clients2.google.com/service/update2/crx'
-}
+$chromeLocation = 'C:\Program Files (x86)\Google\Chrome\Application'
+cp -Force GoogleChrome-external_extensions.json (Get-Item "$chromeLocation\*\default_apps\external_extensions.json").FullName
+cp -Force GoogleChrome-master_preferences.json "$chromeLocation\master_preferences"
+cp -Force GoogleChrome-master_bookmarks.html "$chromeLocation\master_bookmarks.html"
 
 # replace notepad with notepad2.
 choco install -y notepad2
