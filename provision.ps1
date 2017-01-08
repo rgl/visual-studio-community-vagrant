@@ -402,6 +402,6 @@ Install-ChocolateyShortcut `
   -Description 'Windows Services'
 
 # install the Desktop Experience.
-# NB this needed for connecting to Android phones.
+# NB this is needed for connecting to Android phones.
 Write-Host 'Installing the Desktop Experience Windows Feature...'
 Install-WindowsFeature Desktop-Experience
