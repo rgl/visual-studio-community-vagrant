@@ -3,16 +3,7 @@ This is a [Vagrant](https://www.vagrantup.com/) Environment for [Visual Studio C
 
 # Usage
 
-Build the base image with:
-
-```bash
-git clone https://github.com/joefitzgerald/packer-windows
-cd packer-windows
-# this will take ages so leave it running over night...
-packer build windows_2012_r2.json
-vagrant box add windows_2012_r2 windows_2012_r2_virtualbox.box
-cd ..
-```
+Install the [Windows 2016 Base Box](https://github.com/rgl/windows-2016-vagrant).
 
 Install the needed plugins:
 
