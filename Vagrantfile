@@ -48,10 +48,7 @@ Vagrant.configure(2) do |config|
   end
   config.vm.provision "shell", path: "ps.ps1", args: "provision-choco.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnet.ps1"
   config.vm.provision :reload
-  config.vm.provision "shell", path: "ps.ps1", args: "provision-1.ps1"
-  config.vm.provision :reload
-  config.vm.provision "shell", path: "ps.ps1", args: "provision-2.ps1"
-  config.vm.provision :reload
-  config.vm.provision "shell", path: "ps.ps1", args: "provision-3.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-vs.ps1"
 end

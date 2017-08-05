@@ -40,6 +40,4 @@ This environment also contains:
 * [Process Explorer](https://technet.microsoft.com/en-us/sysinternals/processexplorer.aspx)
 * [Process Hacker](https://github.com/processhacker2/processhacker2)
 * [Process Monitor](https://technet.microsoft.com/en-us/sysinternals/processmonitor.aspx)
-* [ReSharper](https://www.jetbrains.com/resharper/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [VSColorOutput (colors the Visual Studio Output pane text)](https://www.visualstudiogallery.msdn.microsoft.com/f4d9c2b5-d6d7-4543-a7a5-2d7ebabc2496)
