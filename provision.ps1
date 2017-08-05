@@ -50,7 +50,7 @@ public class ProcessPrivileges
                 Luid = 0,
                 Attributes = enable ? SE_PRIVILEGE_ENABLED : SE_PRIVILEGE_DISABLED,
             };
-            
+
             if (!LookupPrivilegeValue(null, privilegeName, ref privileges.Luid))
             {
                 throw new Win32Exception();
@@ -90,7 +90,7 @@ function Enable-ProcessPrivilege {
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 function Install-Application($name, $url, $expectedHash, $expectedHashAlgorithm = 'SHA256') {
     $localZipPath = "$env:TEMP\$name.zip"
-    Invoke-WebRequest $url -OutFile $localZipPath 
+    Invoke-WebRequest $url -OutFile $localZipPath
     $actualHash = (Get-FileHash $localZipPath -Algorithm $expectedHashAlgorithm).Hash
     if ($actualHash -ne $expectedHash) {
         throw "$name downloaded from $url to $localZipPath has $actualHash hash that does not match the expected $expectedHash"
@@ -230,7 +230,7 @@ choco install -y notepad2
 
 # install other useful applications and dependencies.
 choco install -y baretail
-choco install -y --allow-empty-checksums dependencywalker
+choco install -y dependencywalker
 choco install -y processhacker
 choco install -y procexp
 choco install -y procmon
@@ -260,15 +260,19 @@ git config --global mergetool.meld.cmd '\"C:/Program Files (x86)/Meld/Meld.exe\"
 #git config --list --show-origin
 
 # install .NET decompiler and deofuscator.
+# see https://github.com/0xd4d/dnSpy/releases
+# see https://ci.appveyor.com/project/0xd4d/dnspy/build/x.x.522
 Install-Application `
     dnSpy `
-    https://github.com/0xd4d/dnSpy/releases/download/v3.0.0/dnSpy.zip `
-    99c0e7bdc93e8051e7e4f09ff75c38ce77119de4a5434cd0cb6aaaf0f71a4ce2
+    https://ci.appveyor.com/api/buildjobs/1t9qhmutda8jqvng/artifacts/dnSpy%2FdnSpy%2Fbin%2FdnSpy.zip `
+    3c08a1c948caf3b82c41f346e68e1e073ea963d17d6f5a2b4cf932b2f3fed892
 Install-BinFile dnSpy 'C:\Program Files\dnSpy\dnSpy.exe'
+# see https://github.com/0xd4d/de4dot
+# see https://ci.appveyor.com/project/0xd4d/de4dot/build/x.x.16
 Install-Application `
     de4dot `
-    https://ci.appveyor.com/api/buildjobs/inku0l04uplh1d1r/artifacts/de4dot.zip `
-    547fec992f1e77caf35849fad2919a6bf8bc02163940c596c4ad0597272a224e
+    https://ci.appveyor.com/api/buildjobs/v4o57dpf47po2vaw/artifacts/de4dot.zip `
+    8e97e76da12711b92e19019ceb34a9c78d44b96dc8afd37f7dca99e49fae7cec
 Install-BinFile de4dot 'C:\Program Files\de4dot\de4dot.exe'
 
 # install msys2.
