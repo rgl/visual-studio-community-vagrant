@@ -51,4 +51,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnet.ps1"
   config.vm.provision :reload
   config.vm.provision "shell", path: "ps.ps1", args: "provision-vs.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnetcore-sdk.ps1"
 end
