@@ -193,7 +193,7 @@ function Bash($script) {
         # we also redirect the stderr to stdout because PowerShell
         # oddly interleaves them.
         # see https://www.gnu.org/software/bash/manual/bash.html#The-Set-Builtin
-        echo 'exec 2>&1;set -eu;export PATH="/usr/bin:$PATH"' $script | &$bashPath
+        echo 'exec 2>&1;set -eu;export PATH="/usr/bin:$PATH";export HOME=$USERPROFILE;' $script | &$bashPath
         if ($LASTEXITCODE) {
             throw "bash execution failed with exit code $LASTEXITCODE"
         }
@@ -203,7 +203,7 @@ function Bash($script) {
 }
 
 # install the remaining dependencies.
-Bash 'pacman --noconfirm -Sy make unzip tar dos2unix'
+Bash 'pacman --noconfirm -Sy make zip unzip tar dos2unix'
 
 # configure the shell.
 Bash @'
@@ -263,6 +263,18 @@ EOF
 
 # install useful tools.
 Bash 'pacman --noconfirm -Sy netcat'
+
+# install mingw gcc.
+Bash @'
+pacman --noconfirm -Sy mingw-w64-x86_64-gcc
+
+cat>>~/.bashrc<<'EOF'
+
+export PATH="/mingw64/bin:$PATH"
+EOF
+
+/mingw64/bin/gcc --version
+'@
 
 # install ConEmu.
 choco install -y conemu
