@@ -7,6 +7,7 @@ choco install -y netfx-4.6.2-devpack
 # see https://www.visualstudio.com/vs/
 # see https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio
 # see https://docs.microsoft.com/en-us/visualstudio/install/command-line-parameter-examples
+# see https://docs.microsoft.com/en-us/visualstudio/install/workload-and-component-ids
 $archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/11102088/045b56eb413191d03850ecc425172a7d/vs_Community.exe'
 $archiveHash = '360972ce49ca4e8aa9ce5f62d45e67c076750aa64143fbe1c5058ffcaa9ff793'
 $archiveName = Split-Path $archiveUrl -Leaf
@@ -25,6 +26,9 @@ for ($try = 1; ; ++$try) {
         --add Microsoft.VisualStudio.Workload.NetCoreTools `
         --add Microsoft.VisualStudio.Workload.NetWeb `
         --add Microsoft.VisualStudio.Workload.ManagedDesktop `
+        --add Microsoft.VisualStudio.Workload.NativeDesktop `
+        --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
+        --add Microsoft.VisualStudio.Component.Windows10SDK.15063.Desktop `
         --norestart `
         --quiet `
         --wait `
