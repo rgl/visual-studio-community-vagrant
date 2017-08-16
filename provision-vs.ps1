@@ -4,11 +4,11 @@ choco install -y netfx-4.7-devpack
 # add support for building applications that target the .net 4.6.2 framework.
 choco install -y netfx-4.6.2-devpack
 
-# see https://www.visualstudio.com/vs/preview/
+# see https://www.visualstudio.com/vs/
 # see https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio
 # see https://docs.microsoft.com/en-us/visualstudio/install/command-line-parameter-examples
-$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/11021200/02c8226ecf13eeb8d1d833f2d04377f0/vs_Community.exe' # v15.3 preview.
-$archiveHash = '8508b49eff9122d112810974ddae1b25c0cec0b6c6be6890ff158b490aa55ee3'
+$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/11102088/045b56eb413191d03850ecc425172a7d/vs_Community.exe'
+$archiveHash = '360972ce49ca4e8aa9ce5f62d45e67c076750aa64143fbe1c5058ffcaa9ff793'
 $archiveName = Split-Path $archiveUrl -Leaf
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host 'Downloading the Visual Studio Setup Bootstrapper...'
@@ -20,7 +20,7 @@ if ($archiveHash -ne $archiveActualHash) {
 Write-Host 'Installing Visual Studio...'
 for ($try = 1; ; ++$try) {
     &$archivePath `
-        --installPath C:\VisualStudio2017PreviewCommunity `
+        --installPath C:\VisualStudio2017Community `
         --add Microsoft.VisualStudio.Workload.CoreEditor `
         --add Microsoft.VisualStudio.Workload.NetCoreTools `
         --add Microsoft.VisualStudio.Workload.NetWeb `
