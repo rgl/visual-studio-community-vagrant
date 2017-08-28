@@ -40,4 +40,5 @@ This environment also contains:
 * [Process Explorer](https://technet.microsoft.com/en-us/sysinternals/processexplorer.aspx)
 * [Process Hacker](https://github.com/processhacker2/processhacker2)
 * [Process Monitor](https://technet.microsoft.com/en-us/sysinternals/processmonitor.aspx)
+* [WinObj](https://docs.microsoft.com/en-us/sysinternals/downloads/winobj)
 * [Visual Studio Code](https://code.visualstudio.com/)

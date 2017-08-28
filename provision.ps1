@@ -121,6 +121,7 @@ choco install -y dependencywalker
 choco install -y processhacker
 choco install -y procexp
 choco install -y procmon
+choco install -y winobj
 choco install -y fiddler4
 choco install -y 7zip
 choco install -y git --params '/GitOnlyOnPath /NoAutoCrlf'
