@@ -123,12 +123,17 @@ choco install -y processhacker
 choco install -y procexp
 choco install -y procmon
 choco install -y winobj
-choco install -y fiddler4
 choco install -y 7zip
 choco install -y git --params '/GitOnlyOnPath /NoAutoCrlf'
 choco install -y gitextensions
 choco install -y meld
 choco install -y visualstudiocode
+
+# install fiddler.
+(New-Object Net.WebClient).DownloadFile(
+    'https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe',
+    "$env:TEMP\FiddlerSetup.exe")
+&"$env:TEMP\FiddlerSetup.exe" /S | Out-String -Stream
 
 # update $env:PATH with the recently installed Chocolatey packages.
 Import-Module C:\ProgramData\chocolatey\helpers\chocolateyInstaller.psm1
