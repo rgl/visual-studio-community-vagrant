@@ -118,6 +118,7 @@ choco install -y notepad2
 # install other useful applications and dependencies.
 choco install -y baretail
 choco install -y dependencywalker
+choco install -y autoruns
 choco install -y processhacker
 choco install -y procexp
 choco install -y procmon
