@@ -43,14 +43,6 @@ Set-ItemProperty -Path HKCU:Software\Microsoft\Windows\CurrentVersion\Explorer\A
 # show file extensions.
 Set-ItemProperty -Path HKCU:Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name HideFileExt -Value 0
 
-# never combine the taskbar buttons.
-#
-# possibe values:
-#   0: always combine and hide labels (default)
-#   1: combine when taskbar is full
-#   2: never combine
-Set-ItemProperty -Path HKCU:Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name TaskbarGlomLevel -Value 2
-
 # display full path in the title bar.
 New-Item -Path HKCU:Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState -Force `
     | New-ItemProperty -Name FullPath -Value 1 -PropertyType DWORD `
@@ -287,27 +279,3 @@ EOF
 choco install -y conemu
 cp ConEmu.xml $env:APPDATA\ConEmu.xml
 reg import ConEmu.reg
-
-# remove the default desktop shortcuts.
-del C:\Users\*\Desktop\*.lnk
-del -Force C:\Users\*\Desktop\*.ini
-
-# add MSYS2 shortcut to the Desktop and Start Menu.
-Install-ChocolateyShortcut `
-  -ShortcutFilePath "$env:USERPROFILE\Desktop\MSYS2 Bash.lnk" `
-  -TargetPath 'C:\Program Files\ConEmu\ConEmu64.exe' `
-  -Arguments '-run {MSYS2} -icon C:\tools\msys64\msys2.ico' `
-  -IconLocation C:\tools\msys64\msys2.ico `
-  -WorkingDirectory '%USERPROFILE%'
-Install-ChocolateyShortcut `
-  -ShortcutFilePath "C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\MSYS2 Bash.lnk" `
-  -TargetPath 'C:\Program Files\ConEmu\ConEmu64.exe' `
-  -Arguments '-run {MSYS2} -icon C:\tools\msys64\msys2.ico' `
-  -IconLocation C:\tools\msys64\msys2.ico `
-  -WorkingDirectory '%USERPROFILE%'
-
-# add Services shortcut to the Desktop.
-Install-ChocolateyShortcut `
-  -ShortcutFilePath "$env:USERPROFILE\Desktop\Services.lnk" `
-  -TargetPath "$env:windir\system32\services.msc" `
-  -Description 'Windows Services'
