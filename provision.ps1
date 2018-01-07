@@ -2,7 +2,7 @@
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 function Install-Application($name, $url, $expectedHash, $expectedHashAlgorithm = 'SHA256') {
     $localZipPath = "$env:TEMP\$name.zip"
-    Invoke-WebRequest $url -OutFile $localZipPath
+    (New-Object Net.WebClient).DownloadFile($url, $localZipPath)
     $actualHash = (Get-FileHash $localZipPath -Algorithm $expectedHashAlgorithm).Hash
     if ($actualHash -ne $expectedHash) {
         throw "$name downloaded from $url to $localZipPath has $actualHash hash that does not match the expected $expectedHash"

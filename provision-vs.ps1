@@ -8,7 +8,7 @@ $archiveHash = 'e293769f03da7a42ed72d37a92304854c4a61db279987fc459d3ec7aaffecf93
 $archiveName = Split-Path $archiveUrl -Leaf
 $archivePath = "$env:TEMP\$archiveName.zip"
 Write-Host 'Downloading the netfx-4.7.1-devpack package...'
-Invoke-WebRequest $archiveUrl -UseBasicParsing -OutFile $archivePath
+(New-Object Net.WebClient).DownloadFile($archiveUrl, $archivePath)
 $archiveActualHash = (Get-FileHash $archivePath -Algorithm SHA256).Hash
 if ($archiveHash -ne $archiveActualHash) {
     throw "$archiveName downloaded from $archiveUrl to $archivePath has $archiveActualHash hash witch does not match the expected $archiveHash"
@@ -36,7 +36,7 @@ $archiveHash = '995c5f356e567e0f2c8f6d744d9b59a88721b22667db9d505d500587b5c68d99
 $archiveName = Split-Path $archiveUrl -Leaf
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host 'Downloading the Visual Studio Setup Bootstrapper...'
-Invoke-WebRequest $archiveUrl -UseBasicParsing -OutFile $archivePath
+(New-Object Net.WebClient).DownloadFile($archiveUrl, $archivePath)
 $archiveActualHash = (Get-FileHash $archivePath -Algorithm SHA256).Hash
 if ($archiveHash -ne $archiveActualHash) {
     throw "$archiveName downloaded from $archiveUrl to $archivePath has $archiveActualHash hash witch does not match the expected $archiveHash"
