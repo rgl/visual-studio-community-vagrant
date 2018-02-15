@@ -36,6 +36,14 @@ function choco {
     Start-Choco $Args
 }
 
+# wrap the dotnet command (to make sure this script aborts when it fails).
+function dotnet {
+    dotnet.exe @Args
+    if ($LASTEXITCODE) {
+        throw "$(@('dotnet')+$Args | ConvertTo-Json -Compress) failed with exit code $LASTEXITCODE"
+    }
+}
+
 cd c:/vagrant
 $script = Resolve-Path $script
 cd (Split-Path $script -Parent)
