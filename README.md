@@ -23,6 +23,7 @@ vagrant up
 This environment also contains:
 
 * [7-Zip](http://www.7-zip.org/)
+* [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns)
 * [BareTail](https://www.baremetalsoft.com/baretail/)
 * [Chocolatey](https://chocolatey.org/)
 * [Classic Shell (Windows Start Menu replacement)](http://www.classicshell.net/)
@@ -37,9 +38,9 @@ This environment also contains:
 * [Meld (visual diff and merge tool)](http://meldmerge.org/)
 * [MSYS2 (shell environment; cygwin based)](http://msys2.github.io/)
 * [Notepad2 (notepad replacement)](http://www.flos-freeware.ch/notepad2.html)
-* [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns)
 * [Process Explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer)
 * [Process Hacker](https://github.com/processhacker2/processhacker2)
 * [Process Monitor](https://docs.microsoft.com/en-us/sysinternals/downloads/procmon)
-* [WinObj](https://docs.microsoft.com/en-us/sysinternals/downloads/winobj)
+* [Qt Creator](http://doc.qt.io/qtcreator/)
 * [Visual Studio Code](https://code.visualstudio.com/)
+* [WinObj](https://docs.microsoft.com/en-us/sysinternals/downloads/winobj)

@@ -46,15 +46,16 @@ del -Force C:\Users\*\Desktop\*.ini
 
 # add desktop shortcuts.
 @(
-    ,('Visual Studio',         'C:\VisualStudio2017Community\Common7\IDE\devenv.exe')
-    ,('Visual Studio Code',    'C:\Program Files\Microsoft VS Code\Code.exe')
-    ,('Fiddler',               'C:\Users\vagrant\AppData\Local\Programs\Fiddler\Fiddler.exe')
     ,('Autoruns',              'C:\ProgramData\chocolatey\lib\AutoRuns\tools\AutoRuns.exe')
-    ,('dnSpy',                 'C:\Program Files\dnSpy\dnSpy.exe')
     ,('Dependency Walker',     'C:\ProgramData\chocolatey\lib\dependencywalker\content\depends.exe')
+    ,('dnSpy',                 'C:\Program Files\dnSpy\dnSpy.exe')
+    ,('Fiddler',               'C:\Users\vagrant\AppData\Local\Programs\Fiddler\Fiddler.exe')
     ,('Process Explorer',      'C:\ProgramData\chocolatey\lib\procexp\tools\procexp64.exe')
-    ,('Process Monitor',       'C:\ProgramData\chocolatey\lib\procmon\tools\Procmon.exe')
     ,('Process Hacker',        'C:\Program Files\Process Hacker 2\ProcessHacker.exe')
+    ,('Process Monitor',       'C:\ProgramData\chocolatey\lib\procmon\tools\Procmon.exe')
+    ,('Qt Creator',            'C:\Qt5101\Tools\QtCreator\bin\qtcreator.exe')
+    ,('Visual Studio Code',    'C:\Program Files\Microsoft VS Code\Code.exe')
+    ,('Visual Studio',         'C:\VisualStudio2017Community\Common7\IDE\devenv.exe')
     ,('WinObj',                'C:\ProgramData\chocolatey\lib\winobj\tools\Winobj.exe')
 ) | ForEach-Object {
     Install-ChocolateyShortcut `
