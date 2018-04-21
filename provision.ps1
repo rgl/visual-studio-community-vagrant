@@ -148,18 +148,18 @@ git config --global mergetool.meld.cmd '\"C:/Program Files (x86)/Meld/Meld.exe\"
 
 # install .NET decompiler and deofuscator.
 # see https://github.com/0xd4d/dnSpy/releases
-# see https://ci.appveyor.com/project/0xd4d/dnspy/build/x.x.716
+# see https://ci.appveyor.com/project/0xd4d/dnspy/build/x.x.757
 Install-Application `
     dnSpy `
-    https://ci.appveyor.com/api/buildjobs/ytdwharlhhe52pe2/artifacts/dnSpy%2FdnSpy%2Fbin%2FdnSpy.zip `
-    9427cb52f95e7c825def18fefd9b08f24f84cd640fe7f17c61c09c8a8743e61c
+    https://ci.appveyor.com/api/buildjobs/nwnilagwmt073h1y/artifacts/dnSpy%2FdnSpy%2Fbin%2FdnSpy.zip `
+    e04dd537f6b0da64b72000c963a3bb5796df54ff8e21d5de492f1cdc48929a56
 Install-BinFile dnSpy 'C:\Program Files\dnSpy\dnSpy.exe'
 # see https://github.com/0xd4d/de4dot
-# see https://ci.appveyor.com/project/0xd4d/de4dot/build/x.x.30
+# see https://ci.appveyor.com/project/0xd4d/de4dot/build/x.x.37
 Install-Application `
     de4dot `
-    https://ci.appveyor.com/api/buildjobs/0rfp1q6sks8axk4g/artifacts/de4dot.zip `
-    193c533a7743ca005f7bc31baeb081768662afda2b99f4a4f74f42004f2563a6
+    https://ci.appveyor.com/api/buildjobs/tfeaywh55gbf23dh/artifacts/de4dot.zip `
+    b319b76ac231cf079d23b08b66ec88b726c02815b66a31276247d11992dd7999
 Install-BinFile de4dot 'C:\Program Files\de4dot\de4dot.exe'
 
 # install msys2.
