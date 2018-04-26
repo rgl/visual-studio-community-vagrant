@@ -8,7 +8,7 @@ Install the [Windows 2016 Base Box](https://github.com/rgl/windows-2016-vagrant)
 Install the needed plugins:
 
 ```bash
-vagrant plugin install vagrant-reload   # https://github.com/aidanns/vagrant-reload
+vagrant plugin install vagrant-reload   # see https://github.com/aidanns/vagrant-reload
 vagrant plugin install vagrant-triggers # see https://github.com/emyl/vagrant-triggers
 ```
 
