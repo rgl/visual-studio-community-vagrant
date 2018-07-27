@@ -108,13 +108,16 @@ cp -Force GoogleChrome-master_bookmarks.html "$chromeLocation\master_bookmarks.h
 choco install -y notepad2
 
 # install other useful applications and dependencies.
+# NB we ignore the sysinternals utilities checksums because they have no proper
+#    versioning and can be updated at any time, which would break this
+#    automatic installation.
 choco install -y baretail
 choco install -y dependencywalker
-choco install -y autoruns
 choco install -y processhacker
-choco install -y procexp
-choco install -y procmon
-choco install -y winobj
+choco install -y --ignore-checksums autoruns    # sysinternals.
+choco install -y --ignore-checksums procexp     # sysinternals.
+choco install -y --ignore-checksums procmon     # sysinternals.
+choco install -y --ignore-checksums winobj      # sysinternals.
 choco install -y 7zip
 choco install -y git --params '/GitOnlyOnPath /NoAutoCrlf'
 choco install -y gitextensions
