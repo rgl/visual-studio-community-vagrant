@@ -122,7 +122,7 @@ choco install -y 7zip
 choco install -y git --params '/GitOnlyOnPath /NoAutoCrlf'
 choco install -y gitextensions
 choco install -y meld
-choco install -y visualstudiocode
+choco install -y vscode
 
 # install fiddler.
 (New-Object Net.WebClient).DownloadFile(
