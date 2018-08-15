@@ -265,7 +265,7 @@ EOF
 '@
 
 # install useful tools.
-Bash 'pacman --noconfirm -Sy netcat'
+Bash 'pacman --noconfirm -Sy netcat procps'
 
 # install mingw gcc.
 Bash @'
