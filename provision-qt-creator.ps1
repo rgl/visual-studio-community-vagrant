@@ -1,8 +1,8 @@
 # see http://doc.qt.io/qtcreator/
 # see https://download.qt.io/archive/online_installers/
 
-$archiveUrl = 'https://download.qt.io/archive/online_installers/3.0/qt-unified-windows-x86-3.0.4-online.exe'
-$archiveHash = '524912d76993a73519163abcd2ec061e9d88e0a18a2e3d9915953af8b8e7a6ad'
+$archiveUrl = 'https://download.qt.io/archive/online_installers/3.0/qt-unified-windows-x86-3.0.5-online.exe'
+$archiveHash = '93f0fc89c345b5663477b932037c28c3a9a3456a907b088dbce5bd2815710b9f'
 $archiveName = Split-Path $archiveUrl -Leaf
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host 'Downloading the Qt Creator Installer...'
