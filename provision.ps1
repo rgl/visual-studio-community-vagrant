@@ -119,7 +119,7 @@ choco install -y --ignore-checksums procexp     # sysinternals.
 choco install -y --ignore-checksums procmon     # sysinternals.
 choco install -y --ignore-checksums winobj      # sysinternals.
 choco install -y 7zip
-choco install -y git --params '/GitOnlyOnPath /NoAutoCrlf'
+choco install -y git --params '/GitOnlyOnPath /NoAutoCrlf /SChannel'
 choco install -y gitextensions
 choco install -y meld
 choco install -y vscode
