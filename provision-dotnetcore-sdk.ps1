@@ -27,3 +27,6 @@ $env:PATH = "$([Environment]::GetEnvironmentVariable('PATH', 'Machine'));$([Envi
 
 # show information about dotnet.
 dotnet --info
+
+# also install sourcelink.
+dotnet tool install --global sourcelink
