@@ -123,6 +123,7 @@ choco install -y git --params '/GitOnlyOnPath /NoAutoCrlf /SChannel'
 choco install -y gitextensions
 choco install -y meld
 choco install -y vscode
+choco install -y jq
 
 # install fiddler.
 (New-Object Net.WebClient).DownloadFile(
