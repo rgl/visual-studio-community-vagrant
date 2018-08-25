@@ -1,3 +1,7 @@
+# link to the gitlab-vagrant environment.
+config_gitlab_fqdn  = 'gitlab.example.com'
+config_gitlab_ip    = '10.10.9.99'
+
 Vagrant.configure(2) do |config|
   config.vm.box = "windows-2016-amd64"
 
@@ -36,26 +40,25 @@ Vagrant.configure(2) do |config|
       end
     vb.customize ["modifyvm", :id, "--audio", audio_driver, "--audiocontroller", "hda"]
   end
-  config.trigger.before :up do
-    if @machine.id
-      info "Clearing any previously set USB filters..."
-      until `VBoxManage showvminfo #{@machine.id} --machinereadable | grep USBFilterName`.empty?
-        run "VBoxManage usbfilter remove 0 --target #{@machine.id}"
-      end
-    end
+
+  config.trigger.before :up do |trigger|
+    trigger.run = {
+      inline: '''bash -euc \'
+certs=(
+  ../gitlab-vagrant/tmp/gitlab.example.com-crt.der
+)
+for cert_path in "${certs[@]}"; do
+  if [ -f $cert_path ]; then
+    mkdir -p tmp
+    cp $cert_path tmp
+  fi
+done
+\'
+'''
+    }
   end
-  config.trigger.after :up do
-    info "Adding USB filters..."
-    # Add a filter for a Samsung mobile phone.
-    # NB run VBoxManage list usbhost to known your device details. 
-    # NB the ADB driver is shipped with Samsung Kies.
-    # see https://www.virtualbox.org/manual/ch03.html#settings-usb
-    # see https://www.virtualbox.org/manual/ch08.html#idm5501
-    run "VBoxManage usbfilter add 0 --target #{@machine.id}" +
-          " --name \"Samsung Galaxy J5 (SM-J500FN)\"" +
-          " --manufacturer SAMSUNG" +
-          " --product SAMSUNG_Android"
-  end
+
+  config.vm.provision "shell", inline: "echo '#{config_gitlab_ip} #{config_gitlab_fqdn}' | Out-File -Encoding ASCII -Append c:/Windows/System32/drivers/etc/hosts"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-choco.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnet.ps1"

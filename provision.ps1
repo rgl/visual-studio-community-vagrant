@@ -125,6 +125,13 @@ choco install -y meld
 choco install -y vscode
 choco install -y jq
 
+# import the gitlab-vagrant environment site https certificate into the local machine trust store.
+if (Test-Path C:/vagrant/tmp/gitlab.example.com-crt.der) {
+    Import-Certificate `
+        -FilePath C:/vagrant/tmp/gitlab.example.com-crt.der `
+        -CertStoreLocation Cert:/LocalMachine/Root
+}
+
 # install fiddler.
 (New-Object Net.WebClient).DownloadFile(
     'https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe',

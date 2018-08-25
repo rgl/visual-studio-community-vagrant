@@ -9,7 +9,6 @@ Install the needed plugins:
 
 ```bash
 vagrant plugin install vagrant-reload   # see https://github.com/aidanns/vagrant-reload
-vagrant plugin install vagrant-triggers # see https://github.com/emyl/vagrant-triggers
 ```
 
 Then start this environment:
