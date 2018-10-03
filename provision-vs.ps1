@@ -62,9 +62,10 @@ if ($archiveHash -ne $archiveActualHash) {
     throw "$archiveName downloaded from $archiveUrl to $archivePath has $archiveActualHash hash witch does not match the expected $archiveHash"
 }
 Write-Host 'Installing Visual Studio...'
+$vsHome = 'C:\VisualStudio2017Community'
 for ($try = 1; ; ++$try) {
     &$archivePath `
-        --installPath C:\VisualStudio2017Community `
+        --installPath $vsHome `
         --add Microsoft.VisualStudio.Workload.CoreEditor `
         --add Microsoft.VisualStudio.Workload.NetCoreTools `
         --add Microsoft.VisualStudio.Workload.NetWeb `
@@ -86,3 +87,9 @@ for ($try = 1; ; ++$try) {
     }
     break
 }
+
+# add MSBuild to the machine PATH.
+[Environment]::SetEnvironmentVariable(
+    'PATH',
+    "$([Environment]::GetEnvironmentVariable('PATH', 'Machine'));$vsHome\MSBuild\15.0\Bin",
+    'Machine')
