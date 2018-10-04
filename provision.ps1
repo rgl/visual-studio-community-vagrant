@@ -87,16 +87,6 @@ $accountImage = [System.Drawing.Image]::FromFile("c:\vagrant\vagrant.png")
 Set-Service Audiosrv -StartupType Automatic
 Start-Service Audiosrv
 
-# install classic shell.
-New-Item -Path HKCU:Software\IvoSoft\ClassicStartMenu -Force `
-    | New-ItemProperty -Name ShowedStyle2      -Value 1 -PropertyType DWORD `
-    | Out-Null
-New-Item -Path HKCU:Software\IvoSoft\ClassicStartMenu\Settings -Force `
-    | New-ItemProperty -Name EnableStartButton -Value 1 -PropertyType DWORD `
-    | New-ItemProperty -Name SkipMetro         -Value 1 -PropertyType DWORD `
-    | Out-Null
-choco install -y classic-shell -installArgs ADDLOCAL=ClassicStartMenu
-
 # install Google Chrome.
 # see https://www.chromium.org/administrators/configuring-other-preferences
 choco install -y googlechrome
