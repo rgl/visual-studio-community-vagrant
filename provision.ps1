@@ -150,11 +150,11 @@ git config --global mergetool.meld.cmd '\"C:/Program Files (x86)/Meld/Meld.exe\"
 
 # install .NET decompiler and deofuscator.
 # see https://github.com/0xd4d/dnSpy/releases
-# see https://ci.appveyor.com/project/0xd4d/dnspy/build/x.x.799
+# see https://ci.appveyor.com/project/0xd4d/dnspy/build/x.x.810
 Install-Application `
     dnSpy `
-    https://ci.appveyor.com/api/buildjobs/bq9cvfenbb0s8qtn/artifacts/dnSpy%2FdnSpy%2Fbin%2FdnSpy.zip `
-    931070ec17d61ffeab89206040573e0cc6dc68e91d8b98b00e3fbca8f116d031
+    https://ci.appveyor.com/api/buildjobs/iyxe3t33t1qxcuis/artifacts/dnSpy%2FdnSpy%2Fbin%2FdnSpy.zip `
+    c9b8f22a02b21a0511ee149f96276a24c185dd5f41f1012cce93dac61cda77b3
 Install-BinFile dnSpy 'C:\Program Files\dnSpy\dnSpy.exe'
 # see https://github.com/0xd4d/de4dot
 # see https://ci.appveyor.com/project/0xd4d/de4dot/build/x.x.42
