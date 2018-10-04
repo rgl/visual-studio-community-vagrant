@@ -3,7 +3,7 @@ This is a [Vagrant](https://www.vagrantup.com/) Environment for [Visual Studio C
 
 # Usage
 
-Install the [Windows 2016 Base Box](https://github.com/rgl/windows-2016-vagrant).
+Install the [Windows 2019 Base Box](https://github.com/rgl/windows-2016-vagrant).
 
 Install the needed plugins:
 
