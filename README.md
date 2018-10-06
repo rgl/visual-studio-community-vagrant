@@ -42,5 +42,6 @@ This environment also contains:
 * [Process Hacker](https://github.com/processhacker2/processhacker2)
 * [Process Monitor](https://docs.microsoft.com/en-us/sysinternals/downloads/procmon)
 * [Qt Creator](http://doc.qt.io/qtcreator/)
+* [Ubuntu (Running on the Windows Subsystem for Linux (WSL))](https://docs.microsoft.com/en-us/windows/wsl)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [WinObj](https://docs.microsoft.com/en-us/sysinternals/downloads/winobj)

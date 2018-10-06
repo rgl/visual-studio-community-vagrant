@@ -54,13 +54,17 @@ del -Force C:\Users\*\Desktop\*.ini
     ,('Process Hacker',        'C:\Program Files\Process Hacker 2\ProcessHacker.exe')
     ,('Process Monitor',       'C:\ProgramData\chocolatey\lib\procmon\tools\Procmon.exe')
     ,('Qt Creator',            'C:\Qt5101\Tools\QtCreator\bin\qtcreator.exe')
+    ,('Ubuntu 18.04',          'C:\Wsl\Ubuntu-18.04\ubuntu1804.exe')
     ,('Visual Studio Code',    'C:\Program Files\Microsoft VS Code\Code.exe')
     ,('Visual Studio',         'C:\VisualStudio2017Community\Common7\IDE\devenv.exe')
     ,('WinObj',                'C:\ProgramData\chocolatey\lib\winobj\tools\Winobj.exe')
 ) | ForEach-Object {
-    Install-ChocolateyShortcut `
-        -ShortcutFilePath "$env:USERPROFILE\Desktop\$($_[0]).lnk" `
-        -TargetPath $_[1]
+    if (Test-Path $_[1]) {
+        Install-ChocolateyShortcut `
+            -ShortcutFilePath "$env:USERPROFILE\Desktop\$($_[0]).lnk" `
+            -TargetPath $_[1] `
+            -IconLocation $_[1]
+    }
 }
 
 # add the MSYS2 shortcut to the Desktop and Start Menu.
@@ -76,6 +80,12 @@ Install-ChocolateyShortcut `
     -Arguments '-run {MSYS2} -icon C:\tools\msys64\msys2.ico' `
     -IconLocation C:\tools\msys64\msys2.ico `
     -WorkingDirectory '%USERPROFILE%'
+
+# add the Ubuntu 18.04 shortcut to the Start Menu.
+Install-ChocolateyShortcut `
+    -ShortcutFilePath "C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\Ubuntu 18.04.lnk" `
+    -TargetPath C:\Wsl\Ubuntu-18.04\ubuntu1804.exe `
+    -IconLocation C:\Wsl\Ubuntu-18.04\ubuntu1804.exe
 
 # restart explorer to apply the changed settings.
 (Get-Process explorer).Kill()
