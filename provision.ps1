@@ -114,6 +114,7 @@ choco install -y git --params '/GitOnlyOnPath /NoAutoCrlf /SChannel'
 choco install -y gitextensions
 choco install -y meld
 choco install -y vscode
+choco install -y python3
 choco install -y jq
 
 # import the gitlab-vagrant environment site https certificate into the local machine trust store.
@@ -147,6 +148,12 @@ git config --global merge.tool meld
 git config --global mergetool.meld.path 'C:/Program Files (x86)/Meld/Meld.exe'
 git config --global mergetool.meld.cmd '\"C:/Program Files (x86)/Meld/Meld.exe\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" --auto-merge --output \"$MERGED\"'
 #git config --list --show-origin
+
+# install vscode extensions.
+code --install-extension dotjoshjohnson.xml
+code --install-extension docsmsft.docs-authoring-pack
+code --install-extension ms-vscode.powershell
+code --install-extension ms-python.python
 
 # install .NET decompiler and deofuscator.
 # see https://github.com/0xd4d/dnSpy/releases
