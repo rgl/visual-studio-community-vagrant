@@ -116,6 +116,7 @@ choco install -y meld
 choco install -y vscode
 choco install -y python3
 choco install -y jq
+choco install -y fiddler
 
 # import the gitlab-vagrant environment site https certificate into the local machine trust store.
 if (Test-Path C:/vagrant/tmp/gitlab.example.com-crt.der) {
@@ -123,12 +124,6 @@ if (Test-Path C:/vagrant/tmp/gitlab.example.com-crt.der) {
         -FilePath C:/vagrant/tmp/gitlab.example.com-crt.der `
         -CertStoreLocation Cert:/LocalMachine/Root
 }
-
-# install fiddler.
-(New-Object Net.WebClient).DownloadFile(
-    'https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe',
-    "$env:TEMP\FiddlerSetup.exe")
-&"$env:TEMP\FiddlerSetup.exe" /S | Out-String -Stream
 
 # update $env:PATH with the recently installed Chocolatey packages.
 Import-Module C:\ProgramData\chocolatey\helpers\chocolateyInstaller.psm1
