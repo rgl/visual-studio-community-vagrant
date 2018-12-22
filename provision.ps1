@@ -150,10 +150,19 @@ git config --global mergetool.meld.cmd '\"C:/Program Files (x86)/Meld/Meld.exe\"
 #git config --list --show-origin
 
 # install vscode extensions.
-code --install-extension dotjoshjohnson.xml
-code --install-extension docsmsft.docs-authoring-pack
-code --install-extension ms-vscode.powershell
-code --install-extension ms-python.python
+@(
+    'hookyqr.beautify'
+    'dotjoshjohnson.xml'
+    'docsmsft.docs-authoring-pack'
+    'ms-vscode.powershell'
+    'ms-vscode.csharp'
+    'ms-vscode.go'
+    'ms-python.python'
+    'mauve.terraform'
+    'zamerick.vscode-caddyfile-syntax'
+) | ForEach-Object {
+    code --install-extension $_
+}
 
 # install .NET decompiler and deofuscator.
 # see https://github.com/0xd4d/dnSpy/releases
