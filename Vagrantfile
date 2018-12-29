@@ -62,6 +62,7 @@ done
   config.vm.provision "shell", path: "ps.ps1", args: "provision-choco.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnet.ps1"
+  config.vm.provision "reload"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-wsl.ps1"
   config.vm.provision "reload"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-vs.ps1"
