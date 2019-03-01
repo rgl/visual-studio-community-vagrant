@@ -5,17 +5,11 @@ This is a [Vagrant](https://www.vagrantup.com/) Environment for [Visual Studio C
 
 Install the [Windows 2019 Base Box](https://github.com/rgl/windows-2016-vagrant).
 
-Install the needed plugins:
-
-```bash
-vagrant plugin install vagrant-reload   # see https://github.com/aidanns/vagrant-reload
-```
-
-Then start this environment:
+Start this environment:
 
 ```bash
 vagrant up
-``` 
+```
 
 
 # Installed Software
