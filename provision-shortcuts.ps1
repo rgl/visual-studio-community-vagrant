@@ -87,6 +87,11 @@ Install-ChocolateyShortcut `
     -TargetPath C:\Wsl\Ubuntu-18.04\ubuntu1804.exe `
     -IconLocation C:\Wsl\Ubuntu-18.04\ubuntu1804.exe
 
+[IO.File]::WriteAllText("$env:USERPROFILE\Desktop\Portainer.url", @"
+[InternetShortcut]
+URL=http://localhost:9000
+"@)
+
 # restart explorer to apply the changed settings.
 (Get-Process explorer).Kill()
 '@)
