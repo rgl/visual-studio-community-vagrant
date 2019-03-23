@@ -25,6 +25,8 @@ This environment also contains:
 * [de4dot (.NET deobfuscator and unpacker)](https://github.com/0xd4d/de4dot)
 * [Dependency Walker (troubleshoot system errors related to loading and executing modules or applications)](http://www.dependencywalker.com/)
 * [dnSpy (.NET assembly editor, decompiler, and debugger)](https://github.com/0xd4d/dnSpy)
+* [Docker Engine CE (default) or Docker Engine WW (you need to uncomment it from the `Vagrantfile`) for Windows containers](https://www.docker.com/products/docker-engine)
+* [docker-reg](https://github.com/genuinetools/reg)
 * [Fiddler (web debugging proxy)](http://www.telerik.com/fiddler)
 * [Git Extensions](https://gitextensions.github.io/)
 * [Git](https://git-for-windows.github.io/)

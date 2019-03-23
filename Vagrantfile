@@ -60,11 +60,15 @@ done
 
   config.vm.provision "shell", inline: "echo '#{config_gitlab_ip} #{config_gitlab_fqdn}' | Out-File -Encoding ASCII -Append c:/Windows/System32/drivers/etc/hosts"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-wsl.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-containers-feature.ps1"
   config.vm.provision "shell", inline: "echo 'Rebooting...'", reboot: true
   config.vm.provision "shell", path: "ps.ps1", args: "provision-choco.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnet.ps1"
   config.vm.provision "shell", inline: "echo 'Rebooting...'", reboot: true
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-docker-ce.ps1"
+  # config.vm.provision "shell", path: "ps.ps1", args: "provision-docker-ee.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-docker-reg.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-vs.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnetcore-sdk.ps1"
   # config.vm.provision "shell", path: "ps.ps1", args: "provision-qt-creator.ps1"
