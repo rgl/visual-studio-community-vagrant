@@ -293,3 +293,7 @@ EOF
 choco install -y conemu
 cp ConEmu.xml $env:APPDATA\ConEmu.xml
 reg import ConEmu.reg
+
+# set default applications.
+choco install -y SetDefaultBrowser
+SetDefaultBrowser HKLM "Google Chrome"

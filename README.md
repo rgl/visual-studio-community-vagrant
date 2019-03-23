@@ -39,6 +39,7 @@ This environment also contains:
 * [Process Hacker](https://github.com/processhacker2/processhacker2)
 * [Process Monitor](https://docs.microsoft.com/en-us/sysinternals/downloads/procmon)
 * [Qt Creator](http://doc.qt.io/qtcreator/)
+* [SetDefaultBrowser](https://kolbi.cz/blog/2017/11/10/setdefaultbrowser-set-the-default-browser-per-user-on-windows-10-and-server-2016-build-1607/)
 * [Ubuntu (Running on the Windows Subsystem for Linux (WSL))](https://docs.microsoft.com/en-us/windows/wsl)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [WinObj](https://docs.microsoft.com/en-us/sysinternals/downloads/winobj)
