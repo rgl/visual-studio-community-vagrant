@@ -1,4 +1,4 @@
-This is a [Vagrant](https://www.vagrantup.com/) Environment for [Visual Studio Community 2017](https://www.visualstudio.com/vs/community/).
+This is a [Vagrant](https://www.vagrantup.com/) Environment for [Visual Studio Community 2019](https://www.visualstudio.com/vs/community/).
 
 
 # Usage

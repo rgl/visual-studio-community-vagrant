@@ -56,7 +56,7 @@ del -Force C:\Users\*\Desktop\*.ini
     ,('Qt Creator',            'C:\Qt5101\Tools\QtCreator\bin\qtcreator.exe')
     ,('Ubuntu 18.04',          'C:\Wsl\Ubuntu-18.04\ubuntu1804.exe')
     ,('Visual Studio Code',    'C:\Program Files\Microsoft VS Code\Code.exe')
-    ,('Visual Studio',         'C:\VisualStudio2017Community\Common7\IDE\devenv.exe')
+    ,('Visual Studio',         'C:\VisualStudio2019Community\Common7\IDE\devenv.exe')
     ,('WinObj',                'C:\ProgramData\chocolatey\lib\winobj\tools\Winobj.exe')
 ) | ForEach-Object {
     if (Test-Path $_[1]) {

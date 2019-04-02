@@ -47,12 +47,12 @@ Install-ModifiedChocolateyPackage netfx-4.7.1-devpack 4.7.2558.0 e293769f03da7a4
 choco install -y netfx-4.6.2-devpack
 
 # see https://www.visualstudio.com/vs/
-# see https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes
+# see https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes
 # see https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio
 # see https://docs.microsoft.com/en-us/visualstudio/install/command-line-parameter-examples
 # see https://docs.microsoft.com/en-us/visualstudio/install/workload-and-component-ids
-$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/a9d5ef0b-a9d4-45a3-9ecd-07e769649b4a/720cbb982f0c6c4c933eb5de37945dc6/vs_community.exe'
-$archiveHash = 'b3cb0af9e04272858899ae1fded65a3fde93ea6f90043f6baf18f253228bcc8a'
+$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/1b6e9bcd-b9f0-45ec-848d-b91d7ac62659/f63d5e9540570c877020913190317949/vs_community.exe'
+$archiveHash = 'b797bf28822d8fa914ff1b6f18d13bf30a58e775366063ada5fc497e1d864b70'
 $archiveName = Split-Path $archiveUrl -Leaf
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host 'Downloading the Visual Studio Setup Bootstrapper...'
@@ -62,7 +62,8 @@ if ($archiveHash -ne $archiveActualHash) {
     throw "$archiveName downloaded from $archiveUrl to $archivePath has $archiveActualHash hash witch does not match the expected $archiveHash"
 }
 Write-Host 'Installing Visual Studio...'
-$vsHome = 'C:\VisualStudio2017Community'
+$vsHome = 'C:\VisualStudio2019Community'
+# NB the Windows 10 SDK 15063 must be compatible with the Windows 10 WDK that we install in provision-wdk.ps1.
 for ($try = 1; ; ++$try) {
     &$archivePath `
         --installPath $vsHome `
@@ -72,7 +73,7 @@ for ($try = 1; ; ++$try) {
         --add Microsoft.VisualStudio.Workload.ManagedDesktop `
         --add Microsoft.VisualStudio.Workload.NativeDesktop `
         --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-        --add Microsoft.VisualStudio.Component.Windows10SDK.15063.Desktop `
+        --add Microsoft.VisualStudio.Component.Windows10SDK.17763 `
         --norestart `
         --quiet `
         --wait `
@@ -91,5 +92,5 @@ for ($try = 1; ; ++$try) {
 # add MSBuild to the machine PATH.
 [Environment]::SetEnvironmentVariable(
     'PATH',
-    "$([Environment]::GetEnvironmentVariable('PATH', 'Machine'));$vsHome\MSBuild\15.0\Bin",
+    "$([Environment]::GetEnvironmentVariable('PATH', 'Machine'));$vsHome\MSBuild\Current\Bin",
     'Machine')
