@@ -20,7 +20,6 @@ This environment also contains:
 * [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns)
 * [BareTail](https://www.baremetalsoft.com/baretail/)
 * [Chocolatey](https://chocolatey.org/)
-* [Classic Shell (Windows Start Menu replacement)](http://www.classicshell.net/)
 * [ConEmu (terminal)](https://conemu.github.io/)
 * [de4dot (.NET deobfuscator and unpacker)](https://github.com/0xd4d/de4dot)
 * [Dependency Walker (troubleshoot system errors related to loading and executing modules or applications)](http://www.dependencywalker.com/)
