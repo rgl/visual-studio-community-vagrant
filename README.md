@@ -42,4 +42,5 @@ This environment also contains:
 * [SetDefaultBrowser](https://kolbi.cz/blog/2017/11/10/setdefaultbrowser-set-the-default-browser-per-user-on-windows-10-and-server-2016-build-1607/)
 * [Ubuntu (Running on the Windows Subsystem for Linux (WSL))](https://docs.microsoft.com/en-us/windows/wsl)
 * [Visual Studio Code](https://code.visualstudio.com/)
+* [Windows Driver Kit (WDK)](https://docs.microsoft.com/en-us/windows-hardware/drivers/)
 * [WinObj](https://docs.microsoft.com/en-us/sysinternals/downloads/winobj)

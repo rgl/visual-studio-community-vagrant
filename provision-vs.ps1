@@ -63,7 +63,7 @@ if ($archiveHash -ne $archiveActualHash) {
 }
 Write-Host 'Installing Visual Studio...'
 $vsHome = 'C:\VisualStudio2019Community'
-# NB the Windows 10 SDK 15063 must be compatible with the Windows 10 WDK that we install in provision-wdk.ps1.
+# NB the Windows 10 SDK 17763 must be compatible with the Windows 10 WDK that we install in provision-wdk.ps1.
 for ($try = 1; ; ++$try) {
     &$archivePath `
         --installPath $vsHome `
