@@ -51,8 +51,8 @@ choco install -y netfx-4.6.2-devpack
 # see https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio
 # see https://docs.microsoft.com/en-us/visualstudio/install/command-line-parameter-examples
 # see https://docs.microsoft.com/en-us/visualstudio/install/workload-and-component-ids
-$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/1b6e9bcd-b9f0-45ec-848d-b91d7ac62659/f63d5e9540570c877020913190317949/vs_community.exe'
-$archiveHash = 'b797bf28822d8fa914ff1b6f18d13bf30a58e775366063ada5fc497e1d864b70'
+$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/5af771ea-4d5a-4f02-ab77-4d61ffab4a7e/10c38ad0aa25c13292c36f22712f0aa0/vs_community.exe'
+$archiveHash = '554e61f1cfa282566fefbd1924fb684d47ed5a60e0eff1089346b712175f4f78'
 $archiveName = Split-Path $archiveUrl -Leaf
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host 'Downloading the Visual Studio Setup Bootstrapper...'
