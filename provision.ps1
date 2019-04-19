@@ -276,6 +276,7 @@ EOF
 
 # install useful tools.
 Bash 'pacman --noconfirm -Sy netcat procps xorriso'
+Bash 'pacman --noconfirm -Sy mingw-w64-x86_64-openldap' # ldap utilities (e.g. ldapsearch)
 
 # install mingw gcc.
 Bash @'
