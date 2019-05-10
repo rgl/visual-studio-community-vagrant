@@ -40,6 +40,7 @@ $config = @{
     'experimental' = $false
     'debug' = $false
     'labels' = @('os=windows')
+    'exec-opts' = @('isolation=process')
     # allow users in the following groups to use the docker engine named pipe.
     # see https://github.com/moby/moby/commit/0906195fbbd6f379c163b80f23e4c5a60bcfc5f0
     # see https://github.com/moby/moby/blob/8e610b2b55bfd1bfa9436ab110d311f5e8a74dcb/daemon/listeners/listeners_windows.go#L25
