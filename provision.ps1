@@ -154,7 +154,7 @@ git config --global mergetool.meld.cmd '\"C:/Program Files (x86)/Meld/Meld.exe\"
     'ms-vscode.go'
     'ms-python.python'
     'mauve.terraform'
-    'peterjausovec.vscode-docker'
+    'ms-azuretools.vscode-docker'
     'zamerick.vscode-caddyfile-syntax'
 ) | ForEach-Object {
     code --install-extension $_
