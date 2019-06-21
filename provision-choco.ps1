@@ -1,3 +1,3 @@
-$env:chocolateyVersion = '0.10.13'
+$env:chocolateyVersion = '0.10.15'
 
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
