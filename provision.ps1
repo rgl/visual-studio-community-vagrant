@@ -167,12 +167,13 @@ Install-Application `
     https://github.com/rgl/dnSpy/releases/download/v6.0.2/dnSpy.zip `
     3fb0db7d35f32006c7855fbdf69fbf793747707bbcf6dd5505ebe69b96067ec3
 Install-BinFile dnSpy 'C:\Program Files\dnSpy\dnSpy.exe'
+# see https://github.com/rgl/de4dot/releases
 # see https://github.com/0xd4d/de4dot
-# see https://ci.appveyor.com/project/0xd4d/de4dot/build/x.x.62
+# see https://ci.appveyor.com/project/0xd4d/de4dot/build/x.x.68
 Install-Application `
     de4dot `
-    https://ci.appveyor.com/api/buildjobs/ul6rh96qsapije57/artifacts/Release%2Fde4dot-net35.zip `
-    af3b4f143707b6b17df543add0b655d724de205b06abde6a8e6f41a733ae906c
+    https://github.com/rgl/de4dot/releases/download/vba8ee30e82a9dbc3c7fe5b7c7846ec9e03e6e23e/de4dot-net35.zip `
+    e398e54a20d9a4aba71a23c40054059a97d0b4360f5e9dfb94ec402733746bea
 Install-BinFile de4dot 'C:\Program Files\de4dot\de4dot.exe'
 
 # install msys2.
