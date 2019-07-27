@@ -1,12 +1,12 @@
 # see https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/configure-docker-daemon
 # see https://docs.docker.com/engine/installation/linux/docker-ce/binaries/#install-server-and-client-binaries-on-windows
-# see https://github.com/docker/docker-ce/releases/tag/v18.09.5
+# see https://github.com/docker/docker-ce/releases/tag/v19.03.1
 
 # download install the docker binaries.
-$archiveVersion = '18.09.5'
+$archiveVersion = '19.03.1'
 $archiveName = "docker-$archiveVersion.zip"
 $archiveUrl = "https://github.com/rgl/docker-ce-windows-binaries-vagrant/releases/download/v$archiveVersion/$archiveName"
-$archiveHash = '159871f51e5aa22be2f74108b75cefcccabaa47e3fbe28961d44b0a58f13a93b'
+$archiveHash = '1097a9e7765b0b6ba6d8a02f7ce0a76571f23b4c5e9b4223c74c7c1f15cb934b'
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host "Installing docker $archiveVersion..."
 (New-Object System.Net.WebClient).DownloadFile($archiveUrl, $archivePath)
@@ -107,7 +107,7 @@ Write-Title 'docker named pipe \\.\pipe\docker_engine ACL'
 #       [System.IO.Directory]::SetAccessControl('\\.\pipe\docker_engine', $ac)
 [System.IO.Directory]::GetAccessControl("\\.\pipe\docker_engine") | Format-Table -Wrap
 
-# see https://docs.docker.com/engine/api/v1.32/
+# see https://docs.docker.com/engine/api/v1.40/
 # see https://github.com/moby/moby/tree/master/api
 Write-Title 'docker info (obtained from http://localhost:2375/info)'
 $infoResponse = Invoke-WebRequest 'http://localhost:2375/info' -UseBasicParsing
