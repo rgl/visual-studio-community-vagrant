@@ -46,15 +46,15 @@ Install-ModifiedChocolateyPackage netfx-4.7.1-devpack 4.7.2558.0 e293769f03da7a4
 # add support for building applications that target the .net 4.6.2 framework.
 choco install -y netfx-4.6.2-devpack
 
-# install Visual Studio Community 2019 16.2.0.
+# install Visual Studio Community 2019 16.3.1.
 # see https://www.visualstudio.com/vs/
 # see https://visualstudio.microsoft.com/downloads/
 # see https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes
 # see https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio
 # see https://docs.microsoft.com/en-us/visualstudio/install/command-line-parameter-examples
 # see https://docs.microsoft.com/en-us/visualstudio/install/workload-and-component-ids
-$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/2034af4f-159a-42ba-ada8-15a8f497312d/a4fa090584e93147e056d533a1fb8484/vs_community.exe'
-$archiveHash = 'c006fc70ac1365c49919f878d59893bfe66a99e440e95e62b4f5c9ea1ee9f12f'
+$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/d7691cc1-82e6-434f-8e9f-a612f85b4b76/db0ec8a446c4c939edc2378faf1296007f2f990fb9d74da464b2b0f530ceabbe/vs_Community.exe'
+$archiveHash = 'db0ec8a446c4c939edc2378faf1296007f2f990fb9d74da464b2b0f530ceabbe'
 $archiveName = Split-Path $archiveUrl -Leaf
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host 'Downloading the Visual Studio Setup Bootstrapper...'
