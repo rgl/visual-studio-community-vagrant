@@ -8,8 +8,10 @@ Install the [Windows 2019 Base Box](https://github.com/rgl/windows-2016-vagrant)
 Start this environment:
 
 ```bash
-vagrant up
+make libvirt-up # or virtualbox-up
 ```
+
+To troubleshoot see the `vagrant.log` file.
 
 
 # Installed Software
