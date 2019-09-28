@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "libvirt" do |lv, config|
     lv.memory = 4*1024
-    lv.cpus = 2
+    lv.cpus = 4
     lv.cpu_mode = "host-passthrough"
     #lv.nested = true
     lv.keymap = "pt"
@@ -17,6 +17,7 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.linked_clone = true
     vb.memory = 4*1024
+    vb.cpus = 4
     vb.customize ["modifyvm", :id, "--vram", 64]
     vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
     vb.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
