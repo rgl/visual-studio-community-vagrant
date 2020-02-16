@@ -1,7 +1,7 @@
 # cleanup the taskbar by removing the existing buttons and unpinning all applications; once the user logs on.
 # NB the shell executes these RunOnce commands about ~10s after the user logs on.
 [IO.File]::WriteAllText(
-    "$env:TEMP\ConfigureTaskbar.ps1",
+    "C:\tmp\ConfigureTaskbar.ps1",
 @'
 Import-Module C:\ProgramData\chocolatey\helpers\chocolateyInstaller.psm1
 
@@ -96,5 +96,5 @@ URL=http://localhost:9000
 (Get-Process explorer).Kill()
 '@)
 New-Item -Path HKCU:Software\Microsoft\Windows\CurrentVersion\RunOnce -Force `
-    | New-ItemProperty -Name ConfigureTaskbar -Value 'PowerShell -WindowStyle Hidden -File "%TEMP%\ConfigureTaskbar.ps1"' -PropertyType ExpandString `
+    | New-ItemProperty -Name ConfigureTaskbar -Value 'PowerShell -WindowStyle Hidden -File "C:\tmp\ConfigureTaskbar.ps1"' -PropertyType ExpandString `
     | Out-Null
