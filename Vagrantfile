@@ -70,6 +70,8 @@ done
   config.vm.provision "shell", path: "ps.ps1", args: "provision-docker-reg.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "portainer/provision.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-vs.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-iis.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-iis-dotnetcore-hosting.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnetcore-sdk.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-wdk.ps1"
   # config.vm.provision "shell", path: "ps.ps1", args: "provision-qt-creator.ps1"
