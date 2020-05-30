@@ -20,5 +20,8 @@ Copy-Item C:\vagrant\provision-wsl-ubuntu.sh $provisionWslScript
 &$distroExe config --default-user vagrant
 Remove-Item $provisionWslScript
 
-Write-Host 'You can remove Ubuntu and all settings with wslconfig.exe /list then wslconfig.exe /unregister Ubuntu-18.04'
+Write-Host 'You can remove Ubuntu and all settings with wsl.exe --list then wsl.exe --unregister Ubuntu-18.04'
 Write-Host 'For more information see https://docs.microsoft.com/en-us/windows/wsl/wsl-config'
+
+Write-Title 'Installed WSL distributions'
+wsl.exe --list --verbose

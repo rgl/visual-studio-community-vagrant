@@ -1,13 +1,41 @@
 # NB use Get-WindowsFeature | Format-Table -AutoSize | Out-String -Width 1024 to list all the available features.
 Write-Host 'Installing IIS and its management tools...'
-Install-WindowsFeature `
-    Web-Default-Doc,
-    Web-Http-Errors,
-    Web-Http-Logging,
-    Web-Http-Tracing,
-    Web-Static-Content,
-    Web-Asp-Net45 `
-    -IncludeManagementTools
+if (Get-Command -ErrorAction SilentlyContinue Install-WindowsFeature) {
+    Install-WindowsFeature `
+        Web-Default-Doc,
+        Web-Http-Errors,
+        Web-Http-Logging,
+        Web-Http-Tracing,
+        Web-Static-Content,
+        Web-Asp-Net45 `
+        -IncludeManagementTools
+} else {
+    Enable-WindowsOptionalFeature `
+        -Online `
+        -NoRestart `
+        -FeatureName `
+            IIS-ApplicationDevelopment,
+            IIS-ASPNET45,
+            IIS-CommonHttpFeatures,
+            IIS-DefaultDocument,
+            IIS-HealthAndDiagnostics,
+            IIS-HttpErrors,
+            IIS-HttpLogging,
+            IIS-HttpTracing,
+            IIS-ISAPIExtensions,
+            IIS-ISAPIFilter,
+            IIS-ManagementConsole,
+            IIS-ManagementScriptingTools,
+            IIS-NetFxExtensibility45,
+            IIS-RequestFiltering,
+            IIS-Security,
+            IIS-StaticContent,
+            IIS-WebServer,
+            IIS-WebServerManagementTools,
+            IIS-WebServerRole,
+            IIS-WebSockets,
+            NetFx4Extended-ASPNET45
+}
 
 Write-Host 'Configuring IIS logging...'
 # NB this modifies %windir%\system32\inetsrv\config\applicationHost.config

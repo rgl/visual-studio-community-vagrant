@@ -3,7 +3,9 @@ This is a [Vagrant](https://www.vagrantup.com/) Environment for [Visual Studio C
 
 # Usage
 
-Install the [Windows 2019 Base Box](https://github.com/rgl/windows-2016-vagrant).
+Install the [Windows 2019 1809 or the Windows 10 2004 Base Box](https://github.com/rgl/windows-vagrant).
+
+Set the Base Box in the [Vagrantfile](Vagrantfile).
 
 Start this environment:
 
@@ -44,4 +46,5 @@ This environment also contains:
 * [Ubuntu (Running on the Windows Subsystem for Linux (WSL))](https://docs.microsoft.com/en-us/windows/wsl)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Windows Driver Kit (WDK)](https://docs.microsoft.com/en-us/windows-hardware/drivers/)
+* [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/)
 * [WinObj](https://docs.microsoft.com/en-us/sysinternals/downloads/winobj)
