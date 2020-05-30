@@ -11,6 +11,12 @@ function Install-Application($name, $url, $expectedHash, $expectedHashAlgorithm 
     [IO.Compression.ZipFile]::ExtractToDirectory($localZipPath, $destinationPath)
 }
 
+# disable cortana and web search.
+New-Item -Path 'HKLM:SOFTWARE\Policies\Microsoft\Windows\Windows Search' -Force `
+    | New-ItemProperty -Name AllowCortana -Value 0 `
+    | New-ItemProperty -Name ConnectedSearchUseWeb -Value 0 `
+    | Out-Null
+
 # set keyboard layout.
 # NB you can get the name from the list:
 #      [Globalization.CultureInfo]::GetCultures('InstalledWin32Cultures') | Out-GridView
