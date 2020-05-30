@@ -1,6 +1,12 @@
+# Copy files from the vagrant shared directory to the local disk.
+# NB this is needed in Windows 10.
+mkdir -Force "$env:TEMP\portainer" | Out-Null
+copy * "$env:TEMP\portainer"
+cd "$env:TEMP\portainer"
+
 Write-Output 'building the portainer image...'
 $tag = 'portainer:1.23.2'
-docker build -t $tag .
+docker build -t $tag --build-arg "WINDOWS_VERSION_TAG=$(Get-WindowsVersionTag)" .
 docker image ls $tag
 docker history $tag
 

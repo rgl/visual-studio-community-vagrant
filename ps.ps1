@@ -16,6 +16,16 @@ function Write-Title($title) {
     Write-Output "#`n# $title`n#"
 }
 
+function Get-WindowsVersionTag {
+    $currentVersionKey = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
+    $osBuild = "$($currentVersionKey.CurrentBuildNumber).$($currentVersionKey.UBR)"
+    $windowsVersionTag = @{
+        '19041.264'     = '2004'
+        '17763.1217'    = '1809'
+    }[$osBuild]
+    $windowsVersionTag
+}
+
 # wrap the choco command (to make sure this script aborts when it fails).
 function Start-Choco([string[]]$Arguments, [int[]]$SuccessExitCodes=@(0)) {
     $command, $commandArguments = $Arguments
