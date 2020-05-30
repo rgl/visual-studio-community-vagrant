@@ -47,4 +47,6 @@ This environment also contains:
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Windows Driver Kit (WDK)](https://docs.microsoft.com/en-us/windows-hardware/drivers/)
 * [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/)
+* [Windows Terminal](https://github.com/microsoft/terminal)
+  * Only installed in Windows 10 2004+.
 * [WinObj](https://docs.microsoft.com/en-us/sysinternals/downloads/winobj)

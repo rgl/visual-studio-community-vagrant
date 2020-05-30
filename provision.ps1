@@ -295,3 +295,6 @@ EOF
 choco install -y conemu
 cp ConEmu.xml $env:APPDATA\ConEmu.xml
 reg import ConEmu.reg
+
+# install the windows terminal.
+choco install -y microsoft-windows-terminal

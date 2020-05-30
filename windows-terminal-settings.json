@@ -1,0 +1,34 @@
+// see https://aka.ms/terminal-documentation
+// see https://aka.ms/terminal-profile-settings
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "defaultProfile": "{8db9d5e3-aac3-4aa4-acc4-773ff088ca77}",
+    "profiles": {
+        "defaults": {
+            "fontFace": "Cascadia Code",
+            "fontSize": 12
+        },
+        "list": [
+            {
+                "guid": "{8db9d5e3-aac3-4aa4-acc4-773ff088ca77}",
+                "name": "msys2 bash",
+                "commandline": "C:\\tools\\msys64\\usr\\bin\\bash -c \"export PATH=\"\"/bin:$PATH\"\"; exec bash -i\"",
+                "icon": "C:\\tools\\msys64\\msys2.ico",
+                "startingDirectory": "%USERPROFILE%",
+                "hidden": false
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe",
+                "hidden": false
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "Command Prompt",
+                "commandline": "cmd.exe",
+                "hidden": false
+            }
+        ]
+    }
+}
