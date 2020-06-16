@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eux
 
+default_wsl_user="${1:-vagrant}"; shift || true
+
 # print environment information.
 uname -a
 cat /etc/os-release
@@ -12,14 +14,14 @@ apt-get upgrade -y
 apt-get autoremove -y
 apt-get clean -y
 
-# add the vagrant user.
-groupadd vagrant
-adduser --disabled-password --gecos '' --ingroup vagrant vagrant
-usermod -a -G admin vagrant
-echo 'vagrant:vagrant' | chpasswd vagrant
+# add the default wsl user.
+groupadd "$default_wsl_user"
+adduser --disabled-password --gecos '' --ingroup "$default_wsl_user" --force-badname "$default_wsl_user"
+usermod -a -G admin "$default_wsl_user"
+sed -i -E 's,^%admin.+,%admin ALL=(ALL) NOPASSWD:ALL,g' /etc/sudoers
 
-# configure the vagrant user shell.
-su vagrant -c bash <<'EOF-VAGRANT'
+# configure the default wsl user shell.
+su "$default_wsl_user" -c bash <<'EOF-DEFAULT-USER'
 set -eux
 
 # configure vim.
@@ -61,4 +63,12 @@ git config --global user.email 'rgl@ruilopes.com'
 git config --global user.name 'Rui Lopes'
 git config --global push.default simple
 git config --global core.autocrlf false
-EOF-VAGRANT
+EOF-DEFAULT-USER
+
+# configure wsl to use the default wsl user by default.
+# NB for this to be applied, you must restart the distro with:
+#       wsl.exe --shutdown
+cat >/etc/wsl.conf <<EOF
+[user]
+default=$default_wsl_user
+EOF
