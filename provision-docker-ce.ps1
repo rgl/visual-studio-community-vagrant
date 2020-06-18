@@ -1,13 +1,13 @@
 # see https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/configure-docker-daemon
 # see https://docs.docker.com/engine/installation/linux/docker-ce/binaries/#install-server-and-client-binaries-on-windows
-# see https://github.com/docker/docker-ce/releases/tag/v19.03.10
-# see https://github.com/rgl/docker-ce-windows-binaries-vagrant/releases/tag/v19.03.10
+# see https://github.com/docker/docker-ce/releases/tag/v19.03.11
+# see https://github.com/rgl/docker-ce-windows-binaries-vagrant/releases/tag/v19.03.11
 
 # download install the docker binaries.
-$archiveVersion = '19.03.10'
+$archiveVersion = '19.03.11'
 $archiveName = "docker-$archiveVersion.zip"
 $archiveUrl = "https://github.com/rgl/docker-ce-windows-binaries-vagrant/releases/download/v$archiveVersion/$archiveName"
-$archiveHash = '56e9b0dae2b34782ba86d101f790060c110b9b9f5af4fde87f0f6e8d2e739fff'
+$archiveHash = 'ff72aec54f6c76b0c400938db57d1b285d17aaaa1c012804e4b7638a408b6621'
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host "Installing docker $archiveVersion..."
 (New-Object System.Net.WebClient).DownloadFile($archiveUrl, $archivePath)
@@ -62,8 +62,8 @@ Start-Service docker
 # see https://hub.docker.com/_/microsoft-windows-servercore
 # see https://hub.docker.com/_/microsoft-windowsfamily-windows
 # see https://docs.microsoft.com/en-us/windows/release-information/
-Write-Host 'Pulling base image...'
 $windowsVersionTag = Get-WindowsVersionTag
+Write-Host "Pulling base image ($windowsVersionTag)..."
 docker pull mcr.microsoft.com/windows/nanoserver:$windowsVersionTag
 #docker pull mcr.microsoft.com/windows/servercore:$windowsVersionTag
 #docker pull mcr.microsoft.com/windows:$windowsVersionTag
