@@ -1,5 +1,5 @@
 libvirt-up:
-	vagrant up --provider=libvirt --debug-timestamp 2>vagrant.log
+	vagrant up --provider=libvirt --debug-timestamp --no-destroy-on-error 2>vagrant.log
 
 virtualbox-up:
-	vagrant up --provider=virtualbox --debug-timestamp 2>vagrant.log
+	vagrant up --provider=virtualbox --debug-timestamp --no-destroy-on-error 2>vagrant.log
