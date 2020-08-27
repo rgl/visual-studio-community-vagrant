@@ -19,6 +19,7 @@ Vagrant.configure(2) do |config|
     vb.linked_clone = true
     vb.memory = 6*1024
     vb.cpus = 4
+    vb.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
     vb.customize ["modifyvm", :id, "--vram", 64]
     vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
     vb.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
