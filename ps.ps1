@@ -18,11 +18,14 @@ function Write-Title($title) {
 
 function Get-WindowsVersionTag {
     $currentVersionKey = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
-    $osBuild = "$($currentVersionKey.CurrentBuildNumber).$($currentVersionKey.UBR)"
+    $windowsBuildNumber = $currentVersionKey.CurrentBuildNumber
     $windowsVersionTag = @{
-        '19041.264'     = '2004'
-        '17763.1217'    = '1809'
-    }[$osBuild]
+        '19041' = '2004'
+        '17763' = '1809'
+    }[$windowsBuildNumber]
+    if (!$windowsVersionTag) {
+        throw "Unknown Windows Build Number $windowsBuildNumber"
+    }
     $windowsVersionTag
 }
 
