@@ -51,5 +51,5 @@ This environment also contains:
   * Only installed in Windows 10 2004+.
   * Only works when running in a VM with nested virtualization enabled (e.g. in kvm).
 * [Windows Terminal](https://github.com/microsoft/terminal)
-  * Only installed in Windows 10 2004+.
+  * Only installed in Windows 10 1903+.
 * [WinObj](https://docs.microsoft.com/en-us/sysinternals/downloads/winobj)

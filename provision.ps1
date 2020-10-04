@@ -297,4 +297,11 @@ cp ConEmu.xml $env:APPDATA\ConEmu.xml
 reg import ConEmu.reg
 
 # install the windows terminal.
-choco install -y microsoft-windows-terminal
+# NB this needs Windows 18362+ (aka Windows 10 1903).
+$windowsCurrentVersionKey = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
+$windowsBuildNumber = $windowsCurrentVersionKey.CurrentBuildNumber
+if ($windowsBuildNumber -ge 18362) {
+    choco install -y microsoft-windows-terminal
+} else {
+    Write-Host "WARN: windows terminal was skipped because you need Windows Build 18362+ (aka Windows 10 1903) and you are using Windows Build $windowsBuildNumber."
+}
