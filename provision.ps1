@@ -154,6 +154,23 @@ git config --global mergetool.meld.path 'C:/Program Files (x86)/Meld/Meld.exe'
 git config --global mergetool.meld.cmd '\"C:/Program Files (x86)/Meld/Meld.exe\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" --auto-merge --output \"$MERGED\"'
 #git config --list --show-origin
 
+# configure Git Extensions.
+function Set-GitExtensionsStringSetting($name, $value) {
+    $settingsPath = "$env:APPDATA\GitExtensions\GitExtensions\GitExtensions.settings"
+    [xml]$settingsDocument = Get-Content $settingsPath
+    $node = $settingsDocument.SelectSingleNode("/dictionary/item[key/string[text()='$name']]")
+    if (!$node) {
+        $node = $settingsDocument.CreateElement('item')
+        $node.InnerXml = "<key><string>$name</string></key><value><string/></value>"
+        $settingsDocument.dictionary.AppendChild($node) | Out-Null
+    }
+    $node.value.string = $value
+    $settingsDocument.Save($settingsPath)
+}
+Set-GitExtensionsStringSetting TelemetryEnabled 'False'
+Set-GitExtensionsStringSetting translation 'English'
+Set-GitExtensionsStringSetting gitbindir 'C:\Program Files\Git\bin\'
+
 # install vscode extensions.
 @(
     'hookyqr.beautify'
