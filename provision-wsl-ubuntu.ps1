@@ -1,6 +1,14 @@
 # see https://wiki.ubuntu.com/WSL
 # see https://docs.microsoft.com/en-us/windows/wsl
 
+# only install in WSL2 (Windows 2004+).
+$windowsCurrentVersionKey = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
+$windowsBuildNumber = $windowsCurrentVersionKey.CurrentBuildNumber
+if ($windowsBuildNumber -lt 19041) {
+    Write-Host "WARN: WSL2 was skipped because you need Windows Build 19041+ (aka Windows 10 2004) and you are using Windows Build $windowsBuildNumber."
+    Exit 0
+}
+
 $distroUser = $env:USERNAME.ToLowerInvariant()
 $distroName = 'Ubuntu-20.04'
 $distroPath = "C:\Wsl\$distroName"
@@ -18,11 +26,13 @@ Remove-Item $archivePath
 Write-Host 'Configuring Ubuntu...'
 $provisionWslScript = 'C:\Windows\Temp\provision-wsl-ubuntu.sh'
 Copy-Item provision-wsl-ubuntu.sh $provisionWslScript
-wsl.exe --distribution $distroName -- /mnt/c/Windows/Temp/provision-wsl-ubuntu.sh $distroUser
+wsl.exe --distribution $distroName -- /mnt/c/Windows/Temp/provision-wsl-ubuntu.sh $distroUser | Out-String -Stream
+Write-Host 'Shutting down Ubuntu...'
 wsl.exe --distribution $distroName --shutdown
 Remove-Item $provisionWslScript
 
 # add the Ubuntu 20.04 shortcut to the Start Menu.
+Write-Host 'Adding the Ubuntu shortcut to the Start menu...'
 Copy-Item ubuntu.ico $distroPath # see https://findicons.com/icon/88935/ubuntu
 Import-Module C:\ProgramData\chocolatey\helpers\chocolateyInstaller.psm1
 Install-ChocolateyShortcut `
