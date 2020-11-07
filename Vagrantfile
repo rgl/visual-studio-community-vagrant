@@ -44,6 +44,21 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--audio", audio_driver, "--audiocontroller", "hda"]
   end
 
+  config.vm.provider 'hyperv' do |hv, override|
+    hv.linked_clone = true
+    hv.memory = 6*1024
+    hv.cpus = 4
+    hv.enable_virtualization_extensions = true # nested virtualization.
+    hv.vlan_id = ENV['HYPERV_VLAN_ID']
+    # see https://github.com/hashicorp/vagrant/issues/7915
+    # see https://github.com/hashicorp/vagrant/blob/10faa599e7c10541f8b7acf2f8a23727d4d44b6e/plugins/providers/hyperv/action/configure.rb#L21-L35
+    override.vm.network :private_network, bridge: ENV['HYPERV_SWITCH_NAME'] if ENV['HYPERV_SWITCH_NAME']
+    override.vm.synced_folder '.', '/vagrant',
+      type: 'smb',
+      smb_username: ENV['VAGRANT_SMB_USERNAME'] || ENV['USER'],
+      smb_password: ENV['VAGRANT_SMB_PASSWORD']
+  end
+
   config.trigger.before :up do |trigger|
     trigger.run = {
       inline: '''bash -euc \'

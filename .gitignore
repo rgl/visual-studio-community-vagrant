@@ -1,3 +1,4 @@
 .vagrant/
 .vs/
 tmp/
+secrets*
