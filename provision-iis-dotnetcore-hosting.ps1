@@ -1,12 +1,12 @@
 # see https://dotnet.microsoft.com/download/dotnet-core/3.1
-# see https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.9/3.1.403-download.md
+# see https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.10/3.1.404-download.md
 
 # install the dotnet core hosting bundle/module.
 # NB this install the module to "C:\Program Files\IIS\Asp.Net Core Module" and registers it in IIS.
 # NB keep this in sync with provision-dotnetcore-sdk.ps1
 # see https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-3.1#install-the-net-core-hosting-bundle
-$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/beca42b0-54a8-4364-86b8-a3d88003fbb7/592e0eec1e5e53f78d9647f7112cc743/dotnet-hosting-3.1.9-win.exe'
-$archiveHash = '674d5f7d12a3fd8070fe5faccda982f5a52a69321cd5018e22d47dfe7cb565667d3402ce1b14b1cf8df1eafcbc9ce56e8c078ed926a273bdc357674e92c221fd'
+$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/7e35ac45-bb15-450a-946c-fe6ea287f854/a37cfb0987e21097c7969dda482cebd3/dotnet-hosting-3.1.10-win.exe'
+$archiveHash = '3c77fb710a56cbb438835176c4668f36737426bb36b5966dc9d834f40b8862863763b04e46bca2de17ac22efa9f1a6632f234b856c69d643a753b0e73f20fc67'
 $archiveName = Split-Path -Leaf $archiveUrl
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host "Downloading $archiveName..."
