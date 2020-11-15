@@ -204,7 +204,7 @@ Install-Application `
 Install-BinFile de4dot 'C:\Program Files\de4dot\de4dot.exe'
 
 # install msys2.
-choco install -y msys2
+choco install -y msys2 --params '/NoPath'
 
 # configure the msys2 launcher to let the shell inherith the PATH.
 $msys2BasePath = 'C:\tools\msys64'
