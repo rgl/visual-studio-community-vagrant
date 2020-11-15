@@ -4,12 +4,6 @@ mkdir -Force "$env:TEMP\portainer" | Out-Null
 copy * "$env:TEMP\portainer"
 cd "$env:TEMP\portainer"
 
-Write-Output 'building the portainer image...'
-$tag = 'portainer:1.23.2'
-docker build -t $tag --build-arg "WINDOWS_VERSION_TAG=$(Get-WindowsVersionTag)" .
-docker image ls $tag
-docker history $tag
-
 Write-Output 'starting portainer...'
 $hostIp = (Get-NetAdapter -Name 'Ethernet*' | Sort-Object -Property Name | Select-Object -Last 1 | Get-NetIPAddress -AddressFamily IPv4).IPAddress
 #$hostIp = (Get-NetAdapter -Name 'vEthernet (nat)' | Get-NetIPAddress -AddressFamily IPv4).IPAddress
@@ -20,7 +14,7 @@ docker `
     -d `
     -v //./pipe/docker_engine://./pipe/docker_engine `
     -p 9000:9000 `
-    portainer:1.23.2 `
+    portainer/portainer-ce:2.0.0 `
         -H npipe:////./pipe/docker_engine
 
 $url = 'http://localhost:9000'
