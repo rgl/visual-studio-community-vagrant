@@ -26,6 +26,7 @@ This environment also contains:
 * [Chocolatey](https://chocolatey.org/)
 * [ConEmu (terminal)](https://conemu.github.io/)
 * [de4dot (.NET deobfuscator and unpacker)](https://github.com/0xd4d/de4dot)
+* [Dependencies (troubleshoot system errors related to loading and executing modules or applications)](https://github.com/lucasg/Dependencies)
 * [Dependency Walker (troubleshoot system errors related to loading and executing modules or applications)](http://www.dependencywalker.com/)
 * [dnSpy (.NET assembly editor, decompiler, and debugger)](https://github.com/0xd4d/dnSpy)
 * [Docker Engine CE (default) or Docker Engine EE (you need to uncomment it from the `Vagrantfile`) for Windows containers](https://www.docker.com/products/docker-engine)

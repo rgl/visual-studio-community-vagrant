@@ -113,6 +113,7 @@ choco install -y notepad2
 #    versioning and can be updated at any time, which would break this
 #    automatic installation.
 choco install -y baretail
+choco install -y dependencies
 choco install -y dependencywalker
 choco install -y processhacker
 choco install -y --ignore-checksums autoruns    # sysinternals.

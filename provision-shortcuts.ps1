@@ -47,6 +47,7 @@ del -Force C:\Users\*\Desktop\*.ini
 # add desktop shortcuts.
 @(
     ,('Autoruns',              'C:\ProgramData\chocolatey\lib\AutoRuns\tools\AutoRuns.exe')
+    ,('Dependencies',          'C:\ProgramData\chocolatey\lib\dependencies\DependenciesGui.exe')
     ,('Dependency Walker',     'C:\ProgramData\chocolatey\lib\dependencywalker\content\depends.exe')
     ,('dnSpy',                 'C:\Program Files\dnSpy\dnSpy.exe')
     ,('Fiddler',               'C:\Users\vagrant\AppData\Local\Programs\Fiddler\Fiddler.exe')
