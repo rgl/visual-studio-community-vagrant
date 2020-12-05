@@ -147,6 +147,7 @@ git config --global user.email 'rgl@ruilopes.com'
 git config --global http.sslbackend schannel
 git config --global push.default simple
 git config --global core.autocrlf false
+git config --global core.longpaths true
 git config --global diff.guitool meld
 git config --global difftool.meld.path 'C:/Program Files (x86)/Meld/Meld.exe'
 git config --global difftool.meld.cmd '\"C:/Program Files (x86)/Meld/Meld.exe\" \"$LOCAL\" \"$REMOTE\"'
