@@ -211,12 +211,24 @@ choco install -y msys2 --params '/NoPath'
 
 # configure the msys2 launcher to let the shell inherith the PATH.
 $msys2BasePath = 'C:\tools\msys64'
-$msys2ConfigPath = "$msys2BasePath\msys2.ini"
+Get-ChildItem "$msys2BasePath\*.ini" | ForEach-Object {
+    [IO.File]::WriteAllText(
+        $_,
+        ([IO.File]::ReadAllText($_) `
+            -replace '#?(MSYS2_PATH_TYPE=).+','$1inherit')
+    )
+}
+
+# configure msys2 to mount C:\Users at /home.
 [IO.File]::WriteAllText(
-    $msys2ConfigPath,
-    ([IO.File]::ReadAllText($msys2ConfigPath) `
-        -replace '#?(MSYS2_PATH_TYPE=).+','$1inherit')
+    "$msys2BasePath\etc\nsswitch.conf",
+    ([IO.File]::ReadAllText("$msys2BasePath\etc\nsswitch.conf") `
+        -replace '(db_home: ).+','$1windows')
 )
+Write-Output 'C:\Users /home' | Out-File -Encoding ASCII -Append "$msys2BasePath\etc\fstab"
+
+# register msys2 bash in the windows explorer context menu.
+reg import MSYS2-Bash-Here.reg
 
 # define a function for easying the execution of bash scripts.
 $bashPath = "$msys2BasePath\usr\bin\bash.exe"
@@ -242,6 +254,12 @@ Bash 'pacman --noconfirm -Sy make zip unzip tar dos2unix'
 # configure the shell.
 Bash @'
 pacman --noconfirm -Sy vim
+
+cat>~/.minttyrc<<"EOF"
+Term=xterm-256color
+Font=Consolas
+FontHeight=10
+EOF
 
 cat>~/.bash_history<<"EOF"
 EOF
@@ -303,18 +321,8 @@ Bash 'pacman --noconfirm -Sy mingw-w64-x86_64-openldap' # ldap utilities (e.g. l
 Bash @'
 pacman --noconfirm -Sy mingw-w64-x86_64-gcc
 
-cat>>~/.bashrc<<'EOF'
-
-export PATH="/mingw64/bin:$PATH"
-EOF
-
 /mingw64/bin/gcc --version
 '@
-
-# install ConEmu.
-choco install -y conemu
-cp ConEmu.xml $env:APPDATA\ConEmu.xml
-reg import ConEmu.reg
 
 # install the windows terminal.
 # NB this needs Windows 18362+ (aka Windows 10 1903).

@@ -1,0 +1,26 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\MSYS2 Bash Here]
+"Icon"="C:\\tools\\msys64\\mingw64.ico"
+[HKEY_CLASSES_ROOT\*\shell\MSYS2 Bash Here\command]
+@="C:\\tools\\msys64\\msys2_shell.cmd -mingw64 -where \"%V\""
+
+[HKEY_CLASSES_ROOT\directory\background\shell\MSYS2 Bash Here]
+"Icon"="C:\\tools\\msys64\\mingw64.ico"
+[HKEY_CLASSES_ROOT\directory\background\shell\MSYS2 Bash Here\command]
+@="C:\\tools\\msys64\\msys2_shell.cmd -mingw64 -where \"%V\""
+
+[HKEY_CLASSES_ROOT\directory\shell\MSYS2 Bash Here]
+"Icon"="C:\\tools\\msys64\\mingw64.ico"
+[HKEY_CLASSES_ROOT\directory\shell\MSYS2 Bash Here\command]
+@="C:\\tools\\msys64\\msys2_shell.cmd -mingw64 -where \"%V\""
+
+[HKEY_CLASSES_ROOT\Drive\shell\MSYS2 Bash Here]
+"Icon"="C:\\tools\\msys64\\mingw64.ico"
+[HKEY_CLASSES_ROOT\Drive\shell\MSYS2 Bash Here\command]
+@="C:\\tools\\msys64\\msys2_shell.cmd -mingw64 -where \"%V\""
+
+[HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\MSYS2 Bash Here]
+"Icon"="C:\\tools\\msys64\\mingw64.ico"
+[HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\MSYS2 Bash Here\command]
+@="C:\\tools\\msys64\\msys2_shell.cmd -mingw64 -where \"%V\""
