@@ -1,0 +1,8 @@
+{
+    "editor.fontFamily": "Cascadia Mono PL",
+    "editor.fontSize": 16,
+    "editor.fontWeight": 400,
+    "files.associations": {
+        "Vagrantfile": "ruby"
+    }
+}

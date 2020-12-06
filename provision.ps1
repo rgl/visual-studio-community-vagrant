@@ -129,6 +129,7 @@ choco install -y python3
 choco install -y golang
 choco install -y jq
 choco install -y fiddler
+choco install -y cascadiamonopl
 
 # import the gitlab-vagrant environment site https certificate into the local machine trust store.
 if (Test-Path C:/vagrant/tmp/gitlab.example.com-crt.der) {
@@ -173,6 +174,36 @@ function Set-GitExtensionsStringSetting($name, $value) {
 Set-GitExtensionsStringSetting TelemetryEnabled 'False'
 Set-GitExtensionsStringSetting translation 'English'
 Set-GitExtensionsStringSetting gitbindir 'C:\Program Files\Git\bin\'
+
+# configure the windows console (command prompt and powershell).
+reg import console-settings.reg
+# re-create the existing powershell shortcuts.
+# NB the powershell console settings are stored inside the shortcut file and
+#    since there is no obvious api to modify it... we have to re-crete the
+#    shortcuts; these new shortcuts will not have any console settings in
+#    them, so, they will inherit the settings from the registry keys that
+#    we've set before.
+# see https://devblogs.microsoft.com/commandline/understanding-windows-console-host-settings/
+Import-Module C:\ProgramData\chocolatey\helpers\chocolateyInstaller.psm1
+@(
+    ,@(
+        "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell (x86).lnk"
+        "$env:SystemRoot\syswow64\WindowsPowerShell\v1.0\powershell.exe")
+    ,@(
+        "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk"
+        "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe")
+) | ForEach-Object {
+    if (Test-Path $_[0]) {
+        Remove-Item $_[0]
+    }
+    Install-ChocolateyShortcut `
+        -ShortcutFilePath $_[0] `
+        -TargetPath $_[1]
+}
+
+# configure vscode.
+mkdir -Force "$env:APPDATA\Code\User" | Out-Null
+Copy-Item vscode-settings.json "$env:APPDATA\Code\User\settings.json"
 
 # install vscode extensions.
 @(
@@ -257,8 +288,9 @@ pacman --noconfirm -Sy vim
 
 cat>~/.minttyrc<<"EOF"
 Term=xterm-256color
-Font=Consolas
-FontHeight=10
+Font=Cascadia Mono PL
+FontHeight=12
+FontWeight=400
 EOF
 
 cat>~/.bash_history<<"EOF"

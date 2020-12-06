@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Console]
+"FaceName"="Cascadia Mono PL"
+"FontFamily"=dword:00000036
+"FontSize"=dword:00120000
+"FontWeight"=dword:00000190
