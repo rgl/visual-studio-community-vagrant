@@ -51,7 +51,7 @@ del -Force C:\Users\*\Desktop\*.ini
     ,('Dependency Walker',     'C:\ProgramData\chocolatey\lib\dependencywalker\content\depends.exe')
     ,('dnSpy',                 'C:\Program Files\dnSpy\dnSpy.exe')
     ,('Fiddler',               'C:\Users\vagrant\AppData\Local\Programs\Fiddler\Fiddler.exe')
-    ,('MSYS2 Bash',            'C:\Program Files\ConEmu\ConEmu64.exe', '-run {MSYS2} -icon C:\tools\msys64\msys2.ico', 'C:\tools\msys64\msys2.ico', '%USERPROFILE%')
+    ,('MSYS2 Bash',            'C:\Program Files\ConEmu\ConEmu64.exe', '-icon C:\tools\msys64\msys2.ico -run {MSYS2}', 'C:\tools\msys64\msys2.ico', '%USERPROFILE%')
     ,('Portainer',             'http://localhost:9000')
     ,('Process Explorer',      'C:\ProgramData\chocolatey\lib\procexp\tools\procexp64.exe')
     ,('Process Hacker',        'C:\Program Files\Process Hacker 2\ProcessHacker.exe')
