@@ -126,6 +126,7 @@ choco install -y gitextensions
 choco install -y meld
 choco install -y vscode
 choco install -y python3
+choco install -y golang
 choco install -y jq
 choco install -y fiddler
 
