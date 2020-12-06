@@ -47,10 +47,12 @@ del -Force C:\Users\*\Desktop\*.ini
 # add desktop shortcuts.
 @(
     ,('Autoruns',              'C:\ProgramData\chocolatey\lib\AutoRuns\tools\AutoRuns.exe')
-    ,('Dependencies',          'C:\ProgramData\chocolatey\lib\dependencies\DependenciesGui.exe')
+    ,('Dependencies',          'C:\ProgramData\chocolatey\lib\dependencies\tools\DependenciesGui.exe')
     ,('Dependency Walker',     'C:\ProgramData\chocolatey\lib\dependencywalker\content\depends.exe')
     ,('dnSpy',                 'C:\Program Files\dnSpy\dnSpy.exe')
     ,('Fiddler',               'C:\Users\vagrant\AppData\Local\Programs\Fiddler\Fiddler.exe')
+    ,('MSYS2 Bash',            'C:\Program Files\ConEmu\ConEmu64.exe', '-run {MSYS2} -icon C:\tools\msys64\msys2.ico', 'C:\tools\msys64\msys2.ico', '%USERPROFILE%')
+    ,('Portainer',             'http://localhost:9000')
     ,('Process Explorer',      'C:\ProgramData\chocolatey\lib\procexp\tools\procexp64.exe')
     ,('Process Hacker',        'C:\Program Files\Process Hacker 2\ProcessHacker.exe')
     ,('Process Monitor',       'C:\ProgramData\chocolatey\lib\procmon\tools\Procmon.exe')
@@ -60,36 +62,36 @@ del -Force C:\Users\*\Desktop\*.ini
     ,('Visual Studio',         'C:\VisualStudio2019Community\Common7\IDE\devenv.exe')
     ,('WinObj',                'C:\ProgramData\chocolatey\lib\winobj\tools\Winobj.exe')
 ) | ForEach-Object {
-    if (Test-Path $_[1]) {
-        if ($_[1] -like '*.lnk') {
-            Copy-Item $_[1] "$env:USERPROFILE\Desktop\$($_[0]).lnk"
-        } else {
-            Install-ChocolateyShortcut `
-                -ShortcutFilePath "$env:USERPROFILE\Desktop\$($_[0]).lnk" `
-                -TargetPath $_[1] `
-                -IconLocation $_[1]
+    if (!(Test-Path $_[1])) {
+        return
+    }
+    if ($_[1] -like 'http*') {
+        [IO.File]::WriteAllText("$env:USERPROFILE\Desktop\$($_[0]).url", @"
+[InternetShortcut]
+URL=$_[1]
+"@)
+    } elseif ($_[1] -like '*.lnk') {
+        Copy-Item $_[1] "$env:USERPROFILE\Desktop\$($_[0]).lnk"
+    } else {
+        $extraArguments = @{
+            IconLocation = $_[1]
         }
+        if ($_.Length -gt 2) {
+            $extraArguments.Arguments = $_[2]
+            $extraArguments.IconLocation = $_[3]
+            $extraArguments.WorkingDirectory = $_[4]
+        }
+        # add into the Desktop.
+        Install-ChocolateyShortcut `
+            -ShortcutFilePath "$env:USERPROFILE\Desktop\$($_[0]).lnk" `
+            -TargetPath $_[1] `
+            @extraArguments
+        # add into the Start Menu.
+        Copy-Item `
+            "$env:USERPROFILE\Desktop\$($_[0]).lnk" `
+            "C:\Users\All Users\Microsoft\Windows\Start Menu\Programs"
     }
 }
-
-# add the MSYS2 shortcut to the Desktop and Start Menu.
-Install-ChocolateyShortcut `
-    -ShortcutFilePath "$env:USERPROFILE\Desktop\MSYS2 Bash.lnk" `
-    -TargetPath 'C:\Program Files\ConEmu\ConEmu64.exe' `
-    -Arguments '-run {MSYS2} -icon C:\tools\msys64\msys2.ico' `
-    -IconLocation C:\tools\msys64\msys2.ico `
-    -WorkingDirectory '%USERPROFILE%'
-Install-ChocolateyShortcut `
-    -ShortcutFilePath "C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\MSYS2 Bash.lnk" `
-    -TargetPath 'C:\Program Files\ConEmu\ConEmu64.exe' `
-    -Arguments '-run {MSYS2} -icon C:\tools\msys64\msys2.ico' `
-    -IconLocation C:\tools\msys64\msys2.ico `
-    -WorkingDirectory '%USERPROFILE%'
-
-[IO.File]::WriteAllText("$env:USERPROFILE\Desktop\Portainer.url", @"
-[InternetShortcut]
-URL=http://localhost:9000
-"@)
 
 # set windows terminal settings.
 $settingsPath = "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
