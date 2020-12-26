@@ -105,6 +105,12 @@ cp -Force GoogleChrome-master_bookmarks.html "$chromeLocation\master_bookmarks.h
 choco install -y SetDefaultBrowser
 SetDefaultBrowser HKLM "Google Chrome"
 
+# install monospace font.
+# NB should be one from https://www.nerdfonts.com/ to be compatible with oh-my-posh.
+# see https://www.programmingfonts.org/#dejavu
+# see https://www.programmingfonts.org/#meslo
+choco install -y font-nerd-dejavusansmono
+
 # replace notepad with notepad2.
 choco install -y notepad2
 
@@ -129,7 +135,6 @@ choco install -y python3
 choco install -y golang
 choco install -y jq
 choco install -y fiddler
-choco install -y cascadiamonopl
 
 # import the gitlab-vagrant environment site https certificate into the local machine trust store.
 if (Test-Path C:/vagrant/tmp/gitlab.example.com-crt.der) {
@@ -207,6 +212,20 @@ Set-Content -Encoding Ascii $PROFILE @'
 Set-PSReadLineKeyHandler -Key Ctrl+d -Function DeleteCharOrExit
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+'@
+
+# install oh-my-posh v3.
+# see https://ohmyposh.dev/docs/installation/
+# see https://ohmyposh.dev/docs/powershell/
+# see https://ohmyposh.dev/docs/themes
+# see also https://starship.rs/
+# NB this requires an updated PowerShellGet as done in provision-powershellget.ps1.
+#Install-Module -Name posh-git
+Install-Module -Name oh-my-posh -AllowPrerelease
+Copy-Item rgl.omp.json ~/.rgl.omp.json
+Add-Content -Encoding Ascii $PROFILE @'
+Import-Module oh-my-posh
+Set-PoshPrompt -Theme ~/.rgl.omp.json
 '@
 
 # configure vscode.
@@ -296,7 +315,7 @@ pacman --noconfirm -Sy vim
 
 cat>~/.minttyrc<<"EOF"
 Term=xterm-256color
-Font=Cascadia Mono PL
+Font=DejaVuSansMono NF
 FontHeight=12
 FontWeight=400
 EOF

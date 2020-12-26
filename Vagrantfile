@@ -78,6 +78,7 @@ done
 
   config.vm.provision "shell", inline: "echo '#{config_gitlab_ip} #{config_gitlab_fqdn}' | Out-File -Encoding ASCII -Append c:/Windows/System32/drivers/etc/hosts"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-choco.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-powershellget.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnet.ps1", reboot: true
   config.vm.provision "shell", path: "ps.ps1", args: "provision-hyper-v.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-wsl.ps1"
