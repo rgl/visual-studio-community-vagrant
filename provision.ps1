@@ -201,6 +201,14 @@ Import-Module C:\ProgramData\chocolatey\helpers\chocolateyInstaller.psm1
         -TargetPath $_[1]
 }
 
+# customize the powershell psreadline behavior.
+Set-Content -Encoding Ascii $PROFILE @'
+#Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineKeyHandler -Key Ctrl+d -Function DeleteCharOrExit
+Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+'@
+
 # configure vscode.
 mkdir -Force "$env:APPDATA\Code\User" | Out-Null
 Copy-Item vscode-settings.json "$env:APPDATA\Code\User\settings.json"
