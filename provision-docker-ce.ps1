@@ -1,13 +1,13 @@
 # see https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/configure-docker-daemon
 # see https://docs.docker.com/engine/installation/linux/docker-ce/binaries/#install-server-and-client-binaries-on-windows
-# see https://github.com/docker/docker-ce/releases/tag/v19.03.14
-# see https://github.com/rgl/docker-ce-windows-binaries-vagrant/releases/tag/v19.03.14
+# see https://github.com/moby/moby/releases/tag/v20.10.1
+# see https://github.com/rgl/docker-ce-windows-binaries-vagrant/releases/tag/v20.10.1
 
 # download install the docker binaries.
-$archiveVersion = '19.03.14'
+$archiveVersion = '20.10.1'
 $archiveName = "docker-$archiveVersion.zip"
 $archiveUrl = "https://github.com/rgl/docker-ce-windows-binaries-vagrant/releases/download/v$archiveVersion/$archiveName"
-$archiveHash = '03bb88b950c07a09920fcd78a3ce414fc73628120294f25d42f79b9917708391'
+$archiveHash = 'f61f564f7bdcc2a7fd9e2cabb38dd4fe7731eeab68f280e813dba543d9b3b15e'
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host "Installing docker $archiveVersion..."
 (New-Object System.Net.WebClient).DownloadFile($archiveUrl, $archivePath)
@@ -52,7 +52,7 @@ $config = @{
     )
 }
 mkdir -Force "$env:ProgramData\docker\config" | Out-Null
-Set-Content -Encoding ascii "$env:ProgramData\docker\config\daemon.json" ($config | ConvertTo-Json)
+Set-Content -Encoding ascii "$env:ProgramData\docker\config\daemon.json" ($config | ConvertTo-Json -Depth 100)
 
 Write-Host 'Starting docker...'
 Start-Service docker
@@ -109,7 +109,7 @@ Write-Title 'docker named pipe \\.\pipe\docker_engine ACL'
 #       [System.IO.Directory]::SetAccessControl('\\.\pipe\docker_engine', $ac)
 [System.IO.Directory]::GetAccessControl("\\.\pipe\docker_engine") | Format-Table -Wrap
 
-# see https://docs.docker.com/engine/api/v1.40/
+# see https://docs.docker.com/engine/api/v1.41/
 # see https://github.com/moby/moby/tree/master/api
 Write-Title 'docker info (obtained from http://localhost:2375/info)'
 $infoResponse = Invoke-WebRequest 'http://localhost:2375/info' -UseBasicParsing
