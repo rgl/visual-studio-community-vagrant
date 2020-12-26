@@ -111,8 +111,16 @@ SetDefaultBrowser HKLM "Google Chrome"
 # see https://www.programmingfonts.org/#meslo
 choco install -y font-nerd-dejavusansmono
 
-# replace notepad with notepad2.
-choco install -y notepad2
+# replace notepad with notepad3.
+choco install -y notepad3
+$notepad3IniPath = "$env:APPDATA\Rizonesoft\Notepad3\Notepad3.ini"
+mkdir -Force (Split-Path -Parent $notepad3IniPath) | Out-Null
+Set-Content -Encoding Ascii $notepad3IniPath @'
+[Settings]
+SettingsVersion=4
+[Common Base]
+Default Style=font:DejaVuSansMono NF; fstyle:Book; size:11
+'@
 
 # install other useful applications and dependencies.
 # NB we ignore the sysinternals utilities checksums because they have no proper
