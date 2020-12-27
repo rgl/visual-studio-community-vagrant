@@ -57,3 +57,20 @@ for ($try = 1; ; ++$try) {
     'PATH',
     "$([Environment]::GetEnvironmentVariable('PATH', 'Machine'));$vsHome\MSBuild\Current\Bin",
     'Machine')
+
+# configure vs.
+# see https://docs.microsoft.com/en-us/visualstudio/ide/reference/resetsettings-devenv-exe?view=vs-2019
+# see https://docs.microsoft.com/en-us/visualstudio/ide/how-to-change-fonts-and-colors-in-visual-studio?view=vs-2019
+Write-Host 'Configuring Visual Studio...'
+$devenv = "$vsHome\Common7\IDE\devenv.com"
+$settingsHomePath = "$env:LOCALAPPDATA\Microsoft\VisualStudio"
+if (Test-Path $settingsHomePath) {
+    Remove-Item -Recurse -Force $settingsHomePath
+}
+&$devenv /NoSplash /ResetSettings General /Command Exit | Out-String -Stream
+$settingsPath = (Get-ChildItem -Recurse "$settingsHomePath\CurrentSettings.vssettings").FullName
+$defaultSettingsPath = "$(Split-Path -Parent $settingsPath)\DefaultSettings.vssettings"
+Move-Item $settingsPath $defaultSettingsPath
+$xsl = New-Object System.Xml.Xsl.XslCompiledTransform
+$xsl.Load("$PWD\vs-settings.xsl")
+$xsl.Transform($defaultSettingsPath, $settingsPath)
