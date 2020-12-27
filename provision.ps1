@@ -211,7 +211,8 @@ Import-Module C:\ProgramData\chocolatey\helpers\chocolateyInstaller.psm1
     }
     Install-ChocolateyShortcut `
         -ShortcutFilePath $_[0] `
-        -TargetPath $_[1]
+        -TargetPath $_[1] `
+        -WorkingDirectory '%USERPROFILE%'
 }
 
 # customize the powershell psreadline behavior.
