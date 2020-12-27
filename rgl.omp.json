@@ -1,7 +1,8 @@
 {
     "final_space": true,
     "console_title": true,
-    "console_title_style": "path",
+    "console_title_style": "template",
+    "console_title_template": "{{.Path}} ::{{if .Root}} Administrator{{end}} PowerShell",
     "blocks": [
         {
             "type": "prompt",
