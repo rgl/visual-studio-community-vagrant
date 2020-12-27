@@ -1,0 +1,76 @@
+{
+    "final_space": true,
+    "console_title": true,
+    "console_title_style": "path",
+    "blocks": [
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "horizontal_offset": 0,
+            "vertical_offset": 0,
+            "segments": [
+                {
+                    "type": "root",
+                    "style": "plain",
+                    "powerline_symbol": "",
+                    "invert_powerline": false,
+                    "foreground": "#FFEE58",
+                    "background": "",
+                    "leading_diamond": "",
+                    "trailing_diamond": "",
+                    "properties": null
+                },
+                {
+                    "type": "session",
+                    "style": "plain",
+                    "powerline_symbol": "",
+                    "invert_powerline": false,
+                    "foreground": "#ffffff",
+                    "background": "",
+                    "leading_diamond": "",
+                    "trailing_diamond": "",
+                    "properties": null
+                },
+                {
+                    "type": "executiontime",
+                    "style": "powerline",
+                    "powerline_symbol": "\uE0B0",
+                    "foreground": "#ffffff",
+                    "background": "#8800dd",
+                    "properties": {
+                        "threshold": 0,
+                        "style": "austin",
+                        "prefix": " <#fefefe>\ufbab</> "
+                    }
+                },
+                {
+                    "type": "exit",
+                    "style": "powerline",
+                    "powerline_symbol": "",
+                    "invert_powerline": false,
+                    "foreground": "#ffffff",
+                    "background": "#ff8080",
+                    "leading_diamond": "",
+                    "trailing_diamond": "",
+                    "properties": {
+                        "prefix": "\uE23A ",
+                        "always_numeric": true
+                    }
+                },
+                {
+                    "type": "path",
+                    "style": "powerline",
+                    "powerline_symbol": "",
+                    "invert_powerline": false,
+                    "foreground": "#100e23",
+                    "background": "#91ddff",
+                    "leading_diamond": "",
+                    "trailing_diamond": "",
+                    "properties": {
+                        "style": "full"
+                    }
+                }
+            ]
+        }
+    ]
+}
