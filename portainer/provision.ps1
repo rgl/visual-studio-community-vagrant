@@ -14,7 +14,7 @@ docker `
     -d `
     -v //./pipe/docker_engine://./pipe/docker_engine `
     -p 9000:9000 `
-    portainer/portainer-ce:2.0.0 `
+    portainer/portainer-ce:2.0.1 `
         -H npipe:////./pipe/docker_engine
 
 $url = 'http://localhost:9000'
