@@ -1,5 +1,8 @@
 # Copy files from the vagrant shared directory to the local disk.
-# NB this is needed in Windows 10.
+# NB this is needed due to docker build failing with:
+#       unable to prepare context: unable to evaluate symlinks in context path: CreateFile
+#       \\192.168.1.69\vgt-0aab8fa734c4edb0eb1969bf3a4502ba-6ad5fdbcbf2eaa93bd62f92333a2e6e5windows:
+#       The network name cannot be found.
 mkdir -Force "$env:TEMP\portainer" | Out-Null
 copy * "$env:TEMP\portainer"
 cd "$env:TEMP\portainer"
@@ -14,7 +17,7 @@ docker `
     -d `
     -v //./pipe/docker_engine://./pipe/docker_engine `
     -p 9000:9000 `
-    portainer/portainer-ce:2.0.1 `
+    portainer/portainer-ce:2.1.1 `
         -H npipe:////./pipe/docker_engine
 
 $url = 'http://localhost:9000'
