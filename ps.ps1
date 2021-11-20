@@ -1,6 +1,7 @@
 param(
     [Parameter(Mandatory=$true)]
-    [String]$script
+    [String]$script,
+    [Switch]$retry = $false
 )
 
 Set-StrictMode -Version Latest
@@ -98,4 +99,17 @@ cd c:/vagrant
 $script = Resolve-Path $script
 cd (Split-Path $script -Parent)
 Write-Host "Running $script..."
-. $script
+while ($true) {
+    try {
+        . $script
+        break
+    } catch {
+        if ($retry.IsPresent) {
+            Write-Host "WARN: $_"
+            Start-Sleep -Seconds 15
+            Write-Host "Retrying..."
+        } else {
+            throw
+        }
+    }
+}

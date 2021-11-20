@@ -80,7 +80,7 @@ done
   config.vm.provision "shell", path: "ps.ps1", args: "provision-choco.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-powershellget.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnet.ps1", reboot: true
-  config.vm.provision "shell", path: "ps.ps1", args: "provision-hyper-v.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: ["-retry", "provision-hyper-v.ps1"]
   config.vm.provision "shell", path: "ps.ps1", args: "provision-wsl.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-containers-feature.ps1", reboot: true
   config.vm.provision "shell", path: "ps.ps1", args: "provision.ps1", reboot: true
@@ -89,7 +89,7 @@ done
   config.vm.provision "shell", path: "ps.ps1", args: "provision-docker-reg.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "portainer/provision.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-vs.ps1"
-  config.vm.provision "shell", path: "ps.ps1", args: "provision-iis.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: ["-retry", "provision-iis.ps1"]
   config.vm.provision "shell", path: "ps.ps1", args: "provision-iis-dotnetcore-hosting.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-dotnetcore-sdk.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-wdk.ps1"
