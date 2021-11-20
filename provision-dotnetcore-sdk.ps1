@@ -30,5 +30,10 @@ $env:PATH = "$([Environment]::GetEnvironmentVariable('PATH', 'Machine'));$([Envi
 # show information about dotnet.
 dotnet --info
 
+# add the nuget.org source.
+# see https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-add-source
+dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
+dotnet nuget list source
+
 # install the sourcelink dotnet global tool.
 dotnet tool install --global sourcelink
