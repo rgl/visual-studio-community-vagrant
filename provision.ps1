@@ -332,10 +332,7 @@ EOF
 cat>~/.bash_history<<"EOF"
 EOF
 
-cat>~/.bashrc<<"EOF"
-# If not running interactively, don't do anything
-[[ "$-" != *i* ]] && return
-
+cat>~/.profile<<"EOF"
 export EDITOR=vim
 export PAGER=less
 
