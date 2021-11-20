@@ -3,9 +3,9 @@ This is a [Vagrant](https://www.vagrantup.com/) Environment for [Visual Studio C
 
 # Usage
 
-Install the [Windows 2019 1809 or the Windows 10 2004 Base Box](https://github.com/rgl/windows-vagrant).
+Install the [Windows 2022 21H2 or the Windows 10 2004 Base Box](https://github.com/rgl/windows-vagrant).
 
-Set the Base Box in the [Vagrantfile](Vagrantfile).
+Set the Base Box in the [Vagrantfile](Vagrantfile) file.
 
 Start this environment:
 
