@@ -1,12 +1,12 @@
-# see https://dotnet.microsoft.com/download/dotnet-core/3.1
-# see https://github.com/dotnet/core/blob/main/release-notes/3.1/3.1.17/3.1.411-download.md
+# see https://dotnet.microsoft.com/download/dotnet/6.0
+# see https://github.com/dotnet/core/blob/main/release-notes/6.0/6.0.0/6.0.0.md
 
 # install the dotnet core hosting bundle/module.
 # NB this install the module to "C:\Program Files\IIS\Asp.Net Core Module" and registers it in IIS.
 # NB keep this in sync with provision-dotnetcore-sdk.ps1
-# see https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-3.1#install-the-net-core-hosting-bundle
-$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/db4f9e1d-7ef3-4409-8c37-1c57a66c1232/97f890c7af1f3e2049992299f2c7a54c/dotnet-hosting-3.1.17-win.exe'
-$archiveHash = '680ecfe0f3f920deb2f5514c56ae84a715f8c54852a682e5bfea0047355b933fe41cb6395761c5de79bd86d9abd071b77c3b5d65fa10655ec1d76600935ecc64'
+# see https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-6.0#install-the-net-core-hosting-bundle
+$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/c5971600-d95e-46b4-b99f-c75dad919237/25469268adf8be3d438355793ecb11da/dotnet-hosting-6.0.0-win.exe'
+$archiveHash = '39d76250b2e3a640a30519008c88353be18b85914878ec9eeee742e9335f0b3597970e8f33bd71f01c13808a52ffdc94295d1ca5c90ed234216a770fe24d92ea'
 $archiveName = Split-Path -Leaf $archiveUrl
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host "Downloading $archiveName..."
@@ -23,7 +23,7 @@ if ($LASTEXITCODE) {
 Remove-Item $archivePath
 
 # enable the recommended modules.
-# see https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/modules?view=aspnetcore-3.1#minimum-module-configuration
+# see https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/modules?view=aspnetcore-6.0#minimum-module-configuration
 Write-Host 'Enabling the UriCacheModule module...'
 # NB this modifies %windir%\system32\inetsrv\config\applicationHost.config
 # NB you can see the IIS schema at %windir%\system32\inetsrv\config\schema\IIS_schema.xml
