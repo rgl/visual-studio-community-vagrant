@@ -1,7 +1,7 @@
-# install the Windows Driver Kit (WDK) for Windows 10, version 1809.
-# NB the WDK must be compatible with the Windows 10 SDK 17763 that we install in provision-vs.ps1.
-$archiveUrl = 'http://download.microsoft.com/download/1/4/0/140EBDB7-F631-4191-9DC0-31C8ECB8A11F/wdk/wdksetup.exe'
-$archiveHash = 'e6e5a57bf0a58242363cd6ca4762f44739f19351efc06cad382cca944b097235'
+# install the Windows Driver Kit (WDK) for Windows 10, version 2004.
+# NB the WDK must be compatible with the Windows 10 SDK 19041 that we install in provision-vs.ps1.
+$archiveUrl = 'https://download.microsoft.com/download/c/f/8/cf80b955-d578-4635-825c-2801911f9d79/wdk/wdksetup.exe'
+$archiveHash = '5f4ea0c55af099f97cb569a927c3a290c211f17edcfc65009f5b9253b9827925'
 $archiveName = Split-Path -Leaf $archiveUrl
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host "Downloading $archiveName..."
