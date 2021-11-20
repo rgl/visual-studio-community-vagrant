@@ -16,7 +16,7 @@ Install-Package -Name docker -ProviderName DockerMsftProvider -Force -RequiredVe
 Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1"
 Update-SessionEnvironment
 
-# NB unfortunatelly docker is automatically started, so we have to stop 
+# NB unfortunatelly docker is automatically started, so we have to stop
 #    it before making the configuration...
 #    see https://github.com/OneGet/MicrosoftDockerProvider/issues/52
 Write-Host 'Stopping docker...'
@@ -40,15 +40,9 @@ Set-Content -Encoding ascii "$env:ProgramData\docker\config\daemon.json" ($confi
 Write-Host 'Starting docker...'
 Start-Service docker
 
-# see https://blogs.technet.microsoft.com/virtualization/2018/10/01/incoming-tag-changes-for-containers-in-windows-server-2019/
-# see https://hub.docker.com/r/microsoft/nanoserver
-Write-Host 'Pulling base image...'
-docker pull mcr.microsoft.com/windows/nanoserver:1809
-#docker pull mcr.microsoft.com/windows/servercore:1809
-#docker pull mcr.microsoft.com/windows/windows:1809
-#docker pull mcr.microsoft.com/windows/servercore:ltsc2019
-#docker pull microsoft/dotnet:2.1-sdk-nanoserver-1809
-#docker pull microsoft/dotnet:2.1-aspnetcore-runtime-nanoserver-1809
+$windowsContainers = Get-WindowsContainers
+Write-Host "Pulling base image $($windowsContainers.nanoserver)..."
+docker pull $windowsContainers.nanoserver
 
 Write-Host 'Creating the firewall rule to allow inbound TCP/IP access to the Docker Engine port 2375...'
 New-NetFirewallRule `
