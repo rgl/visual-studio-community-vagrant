@@ -48,7 +48,7 @@ This environment also contains:
 * [Windows Driver Kit (WDK)](https://docs.microsoft.com/en-us/windows-hardware/drivers/)
 * [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/)
 * [Windows Subsystem for Linux 2 (WSL2)](https://docs.microsoft.com/en-us/windows/wsl/)
-  * Only installed in Windows 10 2004+.
+  * Only installed in Windows 10 2004+ Client/Workstation.
   * Only works when running in a VM with nested virtualization enabled (e.g. in kvm).
 * [Windows Terminal](https://github.com/microsoft/terminal)
   * Only installed in Windows 10 1903+.
