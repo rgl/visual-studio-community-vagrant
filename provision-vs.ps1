@@ -1,11 +1,5 @@
-# add support for building applications that target the .net 4.7.2 framework.
-choco install -y netfx-4.7.2-devpack
-
-# add support for building applications that target the .net 4.7.1 framework.
-choco install -y netfx-4.7.1-devpack
-
-# add support for building applications that target the .net 4.6.2 framework.
-choco install -y netfx-4.6.2-devpack
+# add support for building applications that target the .net 4.8.0 framework.
+choco install -y netfx-4.8-devpack
 
 # install Visual Studio Community 2019 16.10.4.
 # see https://www.visualstudio.com/vs/
