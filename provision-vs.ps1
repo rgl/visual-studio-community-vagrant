@@ -1,15 +1,16 @@
 # add support for building applications that target the .net 4.8.0 framework.
 choco install -y netfx-4.8-devpack
 
-# install Visual Studio Community 2022 17.0.1.
+# install Visual Studio Community 2022 17.1.1.
 # see https://www.visualstudio.com/vs/
 # see https://visualstudio.microsoft.com/downloads/
+# see https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-history#evergreen-bootstrappers
 # see https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes
 # see https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio
 # see https://docs.microsoft.com/en-us/visualstudio/install/command-line-parameter-examples
 # see https://docs.microsoft.com/en-us/visualstudio/install/workload-and-component-ids
-$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/8cea3871-c742-43fb-bf8b-8da0699ab4af/f0640c0be6fb51089f14f5e4476f189dc59b51c2d4106c1630274c2c74f7a17a/vs_Community.exe' # https://aka.ms/vs/17/release/vs_community.exe
-$archiveHash = 'f0640c0be6fb51089f14f5e4476f189dc59b51c2d4106c1630274c2c74f7a17a'
+$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/99543e14-a692-4a98-9ac0-805b0f05f3b4/3a3d45761c098a6caabf432c9587c3119f81a1f166d6ff1d28d899285d3093a1/vs_Community.exe' # https://aka.ms/vs/17/release/vs_community.exe
+$archiveHash = '3a3d45761c098a6caabf432c9587c3119f81a1f166d6ff1d28d899285d3093a1'
 $archiveName = Split-Path $archiveUrl -Leaf
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host 'Downloading the Visual Studio Setup Bootstrapper...'
