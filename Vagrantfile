@@ -86,6 +86,7 @@ done
   config.vm.provision "shell", path: "ps.ps1", args: "provision.ps1", reboot: true
   config.vm.provision "shell", path: "ps.ps1", args: "provision-docker-ce.ps1"
   # config.vm.provision "shell", path: "ps.ps1", args: "provision-docker-ee.ps1"
+  config.vm.provision "shell", path: "ps.ps1", args: "provision-docker-compose.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-docker-reg.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "portainer/provision.ps1"
   config.vm.provision "shell", path: "ps.ps1", args: "provision-vs.ps1"
