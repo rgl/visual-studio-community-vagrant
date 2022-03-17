@@ -62,14 +62,13 @@ del -Force C:\Users\*\Desktop\*.ini
     ,('Visual Studio',         'C:\VisualStudio2022Community\Common7\IDE\devenv.exe')
     ,('WinObj',                'C:\ProgramData\chocolatey\lib\winobj\tools\Winobj.exe')
 ) | ForEach-Object {
-    if (!(Test-Path $_[1])) {
-        return
-    }
     if ($_[1] -like 'http*') {
         [IO.File]::WriteAllText("$env:USERPROFILE\Desktop\$($_[0]).url", @"
 [InternetShortcut]
-URL=$_[1]
+URL=$($_[1])
 "@)
+    } elseif (!(Test-Path $_[1])) {
+        return
     } elseif ($_[1] -like '*.lnk') {
         Copy-Item $_[1] "$env:USERPROFILE\Desktop\$($_[0]).lnk"
     } else {
