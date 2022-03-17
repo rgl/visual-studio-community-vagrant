@@ -7,6 +7,8 @@ mkdir -Force "$env:TEMP\portainer" | Out-Null
 copy * "$env:TEMP\portainer"
 cd "$env:TEMP\portainer"
 
+# see https://github.com/portainer/portainer/releases
+# see https://hub.docker.com/r/portainer/portainer-ce/tags
 Write-Output 'starting portainer...'
 $hostIp = (Get-NetAdapter -Name 'Ethernet*' | Sort-Object -Property Name | Select-Object -Last 1 | Get-NetIPAddress -AddressFamily IPv4).IPAddress
 #$hostIp = (Get-NetAdapter -Name 'vEthernet (nat)' | Get-NetIPAddress -AddressFamily IPv4).IPAddress
@@ -17,7 +19,7 @@ docker `
     -d `
     -v //./pipe/docker_engine://./pipe/docker_engine `
     -p 9000:9000 `
-    portainer/portainer-ce:2.9.3 `
+    portainer/portainer-ce:2.11.1 `
         -H npipe:////./pipe/docker_engine
 
 $url = 'http://localhost:9000'
