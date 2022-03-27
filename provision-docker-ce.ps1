@@ -58,8 +58,8 @@ Write-Host 'Starting docker...'
 Start-Service docker
 
 $windowsContainers = Get-WindowsContainers
-Write-Host "Pulling base image $($windowsContainers.nanoserver)..."
-docker pull $windowsContainers.nanoserver
+Write-Host "Trying the $($windowsContainers.nanoserver) container..."
+docker run --rm $windowsContainers.nanoserver cmd /c ver
 
 Write-Host 'Creating the firewall rule to allow inbound TCP/IP access to the Docker Engine port 2375...'
 New-NetFirewallRule `
