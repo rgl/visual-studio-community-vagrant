@@ -41,6 +41,7 @@ function Get-WindowsContainers {
     $windowsVersionTag = @{
         '20348' = 'ltsc2022'    # Windows Server 2022 (21H2).
         '19041' = '2004'        # Windows 10 (2004 aka 20H1).
+        '19042' = '20H2'        # Windows 10 (2009 aka 20H2).
         '17763' = '1809'        # Windows Server 2019 (1809).
     }[$windowsBuildNumber]
     @{
