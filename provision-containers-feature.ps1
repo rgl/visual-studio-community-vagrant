@@ -1,5 +1,5 @@
 if (Get-Command -ErrorAction SilentlyContinue Install-WindowsFeature) {
-    Install-WindowsFeature Containers
+    Install-WindowsFeature Containers | Out-Null
 } else {
-    Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName Containers
+    Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName Containers | Out-Null
 }
