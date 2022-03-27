@@ -394,6 +394,17 @@ pacman --noconfirm -Sy mingw-w64-x86_64-gcc
 $windowsCurrentVersionKey = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
 $windowsBuildNumber = $windowsCurrentVersionKey.CurrentBuildNumber
 if ($windowsBuildNumber -ge 18362) {
+    # install the Visual C++ Universal Runtime Desktop Bridge dependency.
+    # see https://docs.microsoft.com/en-us/troubleshoot/developer/visualstudio/cpp/libraries/c-runtime-packages-desktop-bridge?msclkid=3e1dd82aac8b11ec8f9dbd86d5979ca8#how-to-install-and-update-desktop-framework-packages
+    # see https://github.com/microsoft/terminal/releases/tag/v1.12.10732.0
+    # see https://github.com/mkevenaar/chocolatey-packages/issues/124
+    # NB this is required because our Windows Base Image do not have the Windows Store installed.
+    $archiveUrl = 'https://download.microsoft.com/download/4/7/c/47c6134b-d61f-4024-83bd-b9c9ea951c25/14.0.30035.0-Desktop/Microsoft.VCLibs.x64.14.00.Desktop.appx'
+    $archivePath = "$env:TEMP\$(Split-Path -Leaf $archiveUrl)"
+    (New-Object System.Net.WebClient).DownloadFile($archiveUrl, $archivePath)
+    Add-AppxPackage $archivePath
+    Remove-Item $archivePath
+    # install the Windows Terminal.
     choco install -y microsoft-windows-terminal
 } else {
     Write-Host "WARN: windows terminal was skipped because you need Windows Build 18362+ (aka Windows 10 1903) and you are using Windows Build $windowsBuildNumber."
