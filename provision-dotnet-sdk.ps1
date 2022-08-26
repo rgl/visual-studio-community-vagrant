@@ -1,5 +1,5 @@
-# see https://dotnet.microsoft.com/download/dotnet/6.0
-# see https://github.com/dotnet/core/blob/main/release-notes/6.0/6.0.3/6.0.3.md
+# see https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+# see https://github.com/dotnet/core/blob/main/release-notes/6.0/6.0.8/6.0.400.md
 
 # opt-out from dotnet telemetry.
 [Environment]::SetEnvironmentVariable('DOTNET_CLI_TELEMETRY_OPTOUT', '1', 'Machine')
@@ -7,8 +7,8 @@ $env:DOTNET_CLI_TELEMETRY_OPTOUT = '1'
 
 # install the dotnet sdk.
 # NB keep this in sync with provision-iis-dotnet-hosting.ps1
-$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/1eb43f77-61af-40b0-8a5a-6165724dca60/f12aac6d4a907b4d54f5d41317aae0f7/dotnet-sdk-6.0.201-win-x64.exe'
-$archiveHash = '7fcd52d520a82c8b2dedc6e3074e2201643ea4d8897b521bfa9e5e9af39a2eadcae9836cc5e4f6707e1077bbeab67159735b67fedd87bd8de3953b94e81ba1a2'
+$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/9a1d2e89-d785-4493-aaf3-73864627a1ea/245bdfaa9c46b87acfb2afbd10ecb0d0/dotnet-sdk-6.0.400-win-x64.exe'
+$archiveHash = '2ef178ceb63590e548fb644d265c4e1f8fdc319fa7d9f31442a958ac901198e4d1edc1b6ea213527bd9f5fba7925d7a12ce9a37d0fc791862518df70fa597f61'
 $archiveName = Split-Path -Leaf $archiveUrl
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host "Downloading $archiveName..."
@@ -29,6 +29,11 @@ $env:PATH = "$([Environment]::GetEnvironmentVariable('PATH', 'Machine'));$([Envi
 
 # show information about dotnet.
 dotnet --info
+
+# add the nuget.org source.
+# see https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-add-source
+dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
+dotnet nuget list source
 
 # install the sourcelink dotnet global tool.
 dotnet tool install --global sourcelink
