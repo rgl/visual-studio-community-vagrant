@@ -223,18 +223,16 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 '@
 
-# install oh-my-posh v3.
-# see https://ohmyposh.dev/docs/installation/
-# see https://ohmyposh.dev/docs/powershell/
+# install oh-my-posh.
+# see https://ohmyposh.dev/docs/installation/windows
 # see https://ohmyposh.dev/docs/themes
 # see also https://starship.rs/
-# NB this requires an updated PowerShellGet as done in provision-powershellget.ps1.
-#Install-Module -Name posh-git
-Install-Module -Name oh-my-posh -AllowPrerelease
+choco install -y oh-my-posh --version 8.33.2
 Copy-Item rgl.omp.json ~/.rgl.omp.json
 Add-Content -Encoding Ascii $PROFILE @'
-Import-Module oh-my-posh
-Set-PoshPrompt -Theme ~/.rgl.omp.json
+if (Get-Command -ErrorAction SilentlyContinue oh-my-posh) {
+    oh-my-posh init powershell --config ~/.rgl.omp.json | Invoke-Expression
+}
 '@
 
 # configure vscode.
