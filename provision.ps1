@@ -399,7 +399,7 @@ if ($windowsBuildNumber -ge 18362) {
     # see https://github.com/microsoft/terminal/releases/tag/v1.12.10732.0
     # see https://github.com/mkevenaar/chocolatey-packages/issues/124
     # NB this is required because our Windows Base Image do not have the Windows Store installed.
-    $archiveUrl = 'https://download.microsoft.com/download/4/7/c/47c6134b-d61f-4024-83bd-b9c9ea951c25/14.0.30035.0-Desktop/Microsoft.VCLibs.x64.14.00.Desktop.appx'
+    $archiveUrl = 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx'
     $archivePath = "$env:TEMP\$(Split-Path -Leaf $archiveUrl)"
     (New-Object System.Net.WebClient).DownloadFile($archiveUrl, $archivePath)
     Add-AppxPackage $archivePath
