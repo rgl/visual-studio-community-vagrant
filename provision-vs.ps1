@@ -1,7 +1,7 @@
 # add support for building applications that target the .net 4.8.0 framework.
 choco install -y netfx-4.8-devpack
 
-# install Visual Studio Community 2022 17.1.2.
+# install Visual Studio Community 2022 17.3.2.
 # see https://www.visualstudio.com/vs/
 # see https://visualstudio.microsoft.com/downloads/
 # see https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-history#evergreen-bootstrappers
@@ -9,8 +9,8 @@ choco install -y netfx-4.8-devpack
 # see https://docs.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio
 # see https://docs.microsoft.com/en-us/visualstudio/install/command-line-parameter-examples
 # see https://docs.microsoft.com/en-us/visualstudio/install/workload-and-component-ids
-$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/c308d1c8-6b87-4859-9de6-c09a446c10ea/40f74ffb9fdcdfe922f51901a9aebdfdc9bda1afb3bf780f04216a40690fc3f8/vs_Community.exe' # https://aka.ms/vs/17/release/vs_community.exe
-$archiveHash = '40f74ffb9fdcdfe922f51901a9aebdfdc9bda1afb3bf780f04216a40690fc3f8'
+$archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/27a23027-9958-4bba-8bc2-a96997f86ad6/6527ccb3762141bc22df33f029c8a8c39d91975e2d463129c6cfa80acd776ee7/vs_Community.exe' # https://aka.ms/vs/17/release/vs_community.exe
+$archiveHash = '6527ccb3762141bc22df33f029c8a8c39d91975e2d463129c6cfa80acd776ee7'
 $archiveName = Split-Path $archiveUrl -Leaf
 $archivePath = "$env:TEMP\$archiveName"
 Write-Host 'Downloading the Visual Studio Setup Bootstrapper...'
@@ -62,6 +62,7 @@ if (Test-Path $settingsHomePath) {
     Remove-Item -Recurse -Force $settingsHomePath
 }
 &$devenv /NoSplash /ResetSettings General /Command Exit | Out-String -Stream
+# e.g. C:\Users\Administrator\AppData\Local\Microsoft\VisualStudio\17.0_4265cb20\Settings
 $settingsPath = (Get-ChildItem -Recurse "$settingsHomePath\CurrentSettings.vssettings").FullName
 $defaultSettingsPath = "$(Split-Path -Parent $settingsPath)\DefaultSettings.vssettings"
 Move-Item $settingsPath $defaultSettingsPath
